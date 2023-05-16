@@ -1,95 +1,99 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Stack,
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default function Home() {
+  const contactInfo = [
+    // email
+    {
+      url: "mailto: mitty0304@naver.com",
+      title: "Email",
+      icon: <EmailIcon />,
+    },
+    // LinkedIn
+    {
+      url: "https://www.linkedin.com/in/eunsoosa/",
+      title: "LinkedIn",
+      icon: <LinkedInIcon />,
+    },
+    // GitHub
+    {
+      url: "https://github.com/Rory0304",
+      title: "GitHub",
+      icon: <GitHubIcon />,
+    },
+  ];
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      <Stack
+        direction="row"
+        component="article"
+        alignItems="center"
+        columnGap={3}
+        paddingY={3.5}
+      >
+        <Box>
+          <Image
+            src="/profile.png"
+            alt="profile image"
+            width={270}
+            height={270}
+          />
+        </Box>
+        <Box>
+          <Typography fontWeight={700}>{`Hello, I'm Rory.`}</Typography>
+          <Typography whiteSpace="pre-line">{`I enjoy writing and I'm interested in web development. Recently, I've been working as indie web developer.`}</Typography>
+        </Box>
+      </Stack>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+      <Divider />
+      <Stack paddingY={3.5}>
+        <Typography
+          variant="h5"
+          component="h2"
+          fontWeight={800}
+          marginBottom={2}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          Contact.
+        </Typography>
+        <List>
+          {contactInfo.map((contact) => (
+            <ListItem key={contact.url}>
+              <Link
+                href={contact.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Stack direction="row" alignItems="center">
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 32,
+                    }}
+                  >
+                    {contact.icon}
+                  </ListItemIcon>
+                  <ListItemText>{contact.title}</ListItemText>
+                </Stack>
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      </Stack>
+    </div>
+  );
 }
