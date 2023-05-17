@@ -1,18 +1,5 @@
-"use client";
-
 import React from "react";
 import { PageSeo, PageHeader, ArticleList } from "src/components/pages";
-import Link from "next/link";
-import {
-  CardMedia,
-  Typography,
-  Card,
-  CardContent,
-  Divider,
-  List,
-  ListItem,
-  Pagination,
-} from "@mui/material";
 
 import { getArticles } from "src/app/api/articles/getArticles";
 
