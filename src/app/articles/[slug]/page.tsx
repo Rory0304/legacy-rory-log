@@ -7,6 +7,7 @@ import { getArticles } from "src/app/api/articles/getArticles";
 import { getParsedSearchQuery } from "src/utils/search";
 
 import "github-markdown-css/github-markdown-light.css";
+import "highlight.js/styles/github.css";
 
 const Article = async ({ params }: any) => {
   const parsedSlug = getParsedSearchQuery(params.slug) ?? "";
