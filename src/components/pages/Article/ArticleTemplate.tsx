@@ -10,10 +10,12 @@ import {
   Divider,
   Stack,
 } from "@mui/material";
+import styled from "@emotion/styled";
 import { isNullableType } from "graphql";
 import Image from "next/image";
 import Link from "next/link";
 import { contactInfo } from "src/constants/contact";
+
 //
 //
 //
@@ -30,6 +32,18 @@ interface ArticleTemplateProps {
     };
   };
 }
+
+const StyledMarkdownTemplate = styled(Box)`
+  padding-bottom: 4rem;
+
+  &.markdown-body {
+    menu,
+    ol,
+    ul {
+      list-style: revert;
+    }
+  }
+`;
 
 const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
   const { title, slug, content, category, thumbnail, date } = article;
@@ -65,6 +79,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
                 priority
                 src={thumbnail.url}
                 alt={`${title} 썸네일입니다.`}
+                style={{ objectFit: "cover" }}
               />
             ) : null}
           </Box>
@@ -85,10 +100,9 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
             {new Date(date).toLocaleDateString()}
           </Typography>
         </Box>
-        <Box
+        <StyledMarkdownTemplate
           className="markdown-body"
           dangerouslySetInnerHTML={{ __html: content }}
-          paddingBottom={4}
         />
         <Divider />
         <Box marginTop={3}>
