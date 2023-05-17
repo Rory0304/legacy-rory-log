@@ -53,8 +53,6 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                     ":hover": {
                       "p:first-of-type": {
                         color: "coral",
-                        textDecoration: "underline",
-                        fontWeight: 600,
                       },
                     },
                   }}
@@ -70,6 +68,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                       variant="h5"
                       marginBottom={1}
                       fontWeight={400}
+                      sx={{
+                        transition: "color 0.15s",
+                      }}
                     >
                       {data.title}
                     </Typography>
@@ -104,6 +105,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                       alt=""
                       width={150}
                       height={150}
+                      style={{
+                        objectFit: "cover",
+                      }}
                     />
                   ) : null}
                 </Card>
