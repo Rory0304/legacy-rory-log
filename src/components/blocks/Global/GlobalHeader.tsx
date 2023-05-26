@@ -19,11 +19,15 @@ import Link from "next/link";
 const PAGE_LIST = [
   {
     title: "Articles",
-    url: "/articles",
+    url: "/",
   },
   {
     title: "Logs",
     url: "/logs",
+  },
+  {
+    title: "About",
+    url: "/about",
   },
 ];
 
@@ -85,6 +89,7 @@ const GlobalHeader: React.FC = () => {
               {PAGE_LIST.map((page) => (
                 <Link passHref href={page.url} key={page.title}>
                   <Button
+                    color="neutral"
                     sx={{
                       my: 2,
                       display: "block",
