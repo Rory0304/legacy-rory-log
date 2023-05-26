@@ -1,17 +1,42 @@
-'server-only'
+"server-only";
 
-import client from 'src/graphql/client';
-import { GET_ARTICLES } from 'src/graphql/query';
+import { convertMarkdownToHtml, stripHtmlTag } from "src/utils/markdown";
 
-interface GetArticlesProps {
-    preview: boolean;
-};
+import client from "src/graphql/client";
+import { GET_ARTICLES } from "src/graphql/query";
 
-export const getArticles = async ({preview = false}: GetArticlesProps): Promise<any | null> => {
-    const { data } = await client.query({
-        query: GET_ARTICLES,
-        fetchPolicy: preview ? 'network-only' : 'network-only',
-    });
+import {
+  GetArticlesDocument,
+  GetArticlesQuery,
+  GetArticlesQueryVariables,
+  Article,
+} from "src/graphql/generated";
 
-    return data.articleCollection.items;
+export type ArticleType = Pick<
+  Article,
+  "title" | "category" | "content" | "date" | "slug" | "thumbnail" | "sys"
+>;
+
+export const getArticles = async ({
+  preview = false,
+}): Promise<ArticleType[]> => {
+  const { data } = await client.query<
+    GetArticlesQuery,
+    GetArticlesQueryVariables
+  >({
+    query: GetArticlesDocument,
+    fetchPolicy: preview ? "network-only" : "cache-first",
+  });
+
+  const articles = data.articleCollection?.items.map((item: any) => {
+    const markdownContent = item.content;
+    const textContent = stripHtmlTag(convertMarkdownToHtml(markdownContent));
+
+    return {
+      ...item,
+      content: textContent,
+    };
+  }) as GetArticlesQuery;
+
+  return articles as ArticleType[];
 };
