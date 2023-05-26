@@ -10,7 +10,7 @@ interface PageHeaderProps {
 
 const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
   return (
-    <Stack paddingY={6} component="header">
+    <Stack paddingY={8} component="header">
       <Typography variant="h3" component="h1" fontWeight={800} marginBottom={2}>
         {title}
       </Typography>

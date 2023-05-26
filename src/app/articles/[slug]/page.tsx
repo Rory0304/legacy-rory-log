@@ -9,9 +9,9 @@ import { getParsedSearchQuery } from "src/utils/search";
 import "github-markdown-css/github-markdown-light.css";
 import "highlight.js/styles/github.css";
 
-const Article = async ({ params }: any) => {
+const Article = async ({ params }: { params: { slug: string } }) => {
   const parsedSlug = getParsedSearchQuery(params.slug) ?? "";
-  const article = await getArticleBySlug(`/articles/${parsedSlug}`);
+  const article = await getArticleBySlug({ slug: `/articles/${parsedSlug}` });
 
   return (
     <>

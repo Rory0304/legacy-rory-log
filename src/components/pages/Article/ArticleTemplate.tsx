@@ -9,28 +9,20 @@ import {
   colors,
   Divider,
   Stack,
+  Avatar,
 } from "@mui/material";
 import styled from "@emotion/styled";
 import { isNullableType } from "graphql";
 import Image from "next/image";
 import Link from "next/link";
 import { contactInfo } from "src/constants/contact";
-
+import { ArticleType } from "src/app/api/article/getArticle";
 //
 //
 //
 
 interface ArticleTemplateProps {
-  article: {
-    title: string;
-    slug: string;
-    content: string;
-    category: string;
-    date: string;
-    thumbnail?: {
-      url: string;
-    };
-  };
+  article: ArticleType;
 }
 
 const StyledMarkdownTemplate = styled(Box)`
@@ -47,6 +39,8 @@ const StyledMarkdownTemplate = styled(Box)`
 
 const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
   const { title, slug, content, category, thumbnail, date } = article;
+
+  const localizedDate = new Date(date).toLocaleDateString();
 
   return (
     <article>
@@ -96,44 +90,56 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
           >
             {title}
           </Typography>
+          {/* ref: https://ko.legacy.reactjs.org/docs/dom-elements.html#suppresshydrationwarning */}
           <Typography variant="caption" color="GrayText">
-            {new Date(date).toLocaleDateString()}
+            <time dateTime={localizedDate} suppressHydrationWarning>
+              {localizedDate}
+            </time>
           </Typography>
         </Box>
         <StyledMarkdownTemplate
           className="markdown-body"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: (content ?? "") as string }}
         />
         <Divider />
         <Box marginTop={3}>
           <Typography variant="h6" fontWeight={700} marginBottom={1}>
             글쓴이
           </Typography>
-          <Typography marginBottom={1} fontWeight={700}>
-            Rory (로리)
-          </Typography>
-          <Stack direction="row" gap={1}>
-            {contactInfo.map((contact) => (
-              <Link key={contact.url} href={contact.url}>
-                <Typography
-                  color="coral"
-                  fontWeight={700}
-                  sx={{
-                    transition: "cubic-bezier(.4,0,.2,1) 0.15s",
-                    ":hover": {
-                      boxShadow: "0px 2px 0px 0px coral",
-                    },
-                  }}
-                >
-                  {contact.title}
-                </Typography>
-              </Link>
-            ))}
+          <Stack direction="row" columnGap={2}>
+            <Avatar
+              alt="Rory (로리)"
+              src="/profile-image.png"
+              sx={{ width: 56, height: 56 }}
+            />
+            <div>
+              <Typography marginBottom={0.5} fontWeight={700}>
+                Rory (로리)
+              </Typography>
+              <Stack direction="row" gap={1}>
+                {contactInfo.map((contact) => (
+                  <Link key={contact.url} href={contact.url}>
+                    <Typography
+                      color="coral"
+                      fontWeight={700}
+                      sx={{
+                        transition: "cubic-bezier(.4,0,.2,1) 0.15s",
+                        ":hover": {
+                          boxShadow: "0px 2px 0px 0px coral",
+                        },
+                      }}
+                    >
+                      {contact.title}
+                    </Typography>
+                  </Link>
+                ))}
+              </Stack>
+            </div>
           </Stack>
         </Box>
       </Box>
       <Box paddingTop={10} textAlign="center">
-        <Link passHref href="/articles">
+        <Link passHref href="/">
           <Button
             disableElevation
             LinkComponent={"a"}

@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import styled from "@emotion/styled";
+
 import {
   Typography,
   Card,
@@ -13,33 +15,86 @@ import {
   Pagination,
   Box,
   Chip,
+  Button,
+  Tabs,
+  Tab,
 } from "@mui/material";
+
+import ArticleTabs from "./ArticleTabs";
+import { ArticleType } from "src/app/api/articles/getArticles";
+
+//
+//
+//
 
 const ARTICLES_PER_PAGE = 10;
 
 interface ArticleListProps {
-  articleList: {
-    slug?: string;
-    title?: string;
-    content?: string;
-    category?: string;
-    date?: string;
-    thumbnail?: {
-      url: string;
-    };
-  }[];
+  articleList: ArticleType[];
+  tabList: string[];
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
+const StyledTab = styled(Tab)`
+  border-bottom: 0;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  color: #d1d6db;
+  min-width: 0;
+  padding: 0;
+  margin-right: 1rem;
+  transition: all 0.15s;
+
+  &:hover {
+    color: #333d4b;
+    font-weight: bold;
+  }
+
+  &.Mui-selected {
+    color: #333d4b;
+    font-weight: bold;
+  }
+`;
+
+const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
   const [page, setPage] = React.useState(1);
-  const total = Math.ceil(articleList.length / ARTICLES_PER_PAGE);
+  const [selectedTab, setSelectedTab] = React.useState("All");
+  const [searchedArticleList, setSearchedArticleList] =
+    React.useState<ArticleType[]>(articleList);
+
+  const total = Math.ceil(searchedArticleList.length / ARTICLES_PER_PAGE);
+
+  React.useEffect(() => {
+    // initialize page number when category is changed
+    setPage(1);
+
+    // filter article list by category
+    if (selectedTab === "All") {
+      setSearchedArticleList(articleList);
+    } else {
+      const filteredArticleList = articleList.filter(
+        (article) => article.category === selectedTab
+      );
+      setSearchedArticleList(filteredArticleList);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTab]);
 
   return (
-    <>
+    <Box paddingY={4}>
+      <ArticleTabs
+        tabs={tabList}
+        tab={selectedTab}
+        total={articleList.length}
+        onChange={setSelectedTab}
+      />
       <List disablePadding sx={{ marginBottom: 4 }}>
-        {articleList.map((data, index) =>
-          data.slug ? (
-            <Link href={data.slug} key={`article-${index}`}>
+        {searchedArticleList.map((article, index) => {
+          const localizedDate = article.date
+            ? new Date(article.date).toLocaleDateString()
+            : "";
+
+          return article.slug ? (
+            <Link href={article.slug} key={`article-${index}`}>
               <ListItem disablePadding divider>
                 <Card
                   sx={{
@@ -59,7 +114,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                 >
                   <CardContent sx={{ padding: 0, marginRight: 4 }}>
                     <Chip
-                      label={data.category}
+                      label={article.category}
                       size="small"
                       sx={{ borderRadius: 4, marginBottom: 2 }}
                     />
@@ -72,7 +127,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                         transition: "color 0.15s",
                       }}
                     >
-                      {data.title}
+                      {article.title}
                     </Typography>
                     <Typography
                       component="p"
@@ -87,21 +142,21 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                         WebkitBoxOrient: "vertical",
                       }}
                     >
-                      {data.content}
+                      {article.content}
                     </Typography>
                     <Typography
                       component="span"
                       variant="caption"
                       color="GrayText"
                     >
-                      {data.date
-                        ? new Date(data.date).toLocaleDateString()
-                        : null}
+                      <time dateTime={localizedDate} suppressHydrationWarning>
+                        {localizedDate}
+                      </time>
                     </Typography>
                   </CardContent>
-                  {data.thumbnail?.url ? (
+                  {article.thumbnail?.url ? (
                     <Image
-                      src={data.thumbnail.url}
+                      src={article.thumbnail.url}
                       alt=""
                       width={150}
                       height={150}
@@ -113,8 +168,8 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                 </Card>
               </ListItem>
             </Link>
-          ) : null
-        )}
+          ) : null;
+        })}
       </List>
 
       <Box>
@@ -125,7 +180,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
           onChange={(_, value) => setPage(value)}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 
