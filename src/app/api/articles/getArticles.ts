@@ -3,7 +3,6 @@
 import { convertMarkdownToHtml, stripHtmlTag } from "src/utils/markdown";
 
 import client from "src/graphql/client";
-import { GET_ARTICLES } from "src/graphql/query";
 
 import {
   GetArticlesDocument,
