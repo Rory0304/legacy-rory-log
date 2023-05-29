@@ -57,7 +57,7 @@ const Youtube: React.FC<YoutubeProps> = ({ videoUrl }) => {
         allowFullScreen
         id="player"
         src={`https://www.youtube.com/embed/${videoId}`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
       />
     </StyledResponsiveYoutubeContainer>
   );
