@@ -985,13 +985,22 @@ export const GetArticleDocument = gql`
     ${ArticleFieldsFragmentDoc}`;
 export const GetArticlesDocument = gql`
     query GetArticles {
-  articleCollection {
+  articleCollection(order: date_DESC) {
     items {
       ...ArticleFields
     }
   }
 }
     ${ArticleFieldsFragmentDoc}`;
+export const GetArticleSlugsDocument = gql`
+    query GetArticleSlugs {
+  articleCollection {
+    items {
+      slug
+    }
+  }
+}
+    `;
 export const GetLogsDocument = gql`
     query GetLogs {
   logCollection {
@@ -1016,6 +1025,11 @@ export type GetArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetArticlesQuery = { __typename?: 'Query', articleCollection?: { __typename?: 'ArticleCollection', items: Array<{ __typename?: 'Article', title?: string | null, slug?: string | null, content?: string | null, category?: string | null, date?: any | null, sys: { __typename?: 'Sys', id: string }, thumbnail?: { __typename?: 'Asset', url?: string | null } | null } | null> } | null };
+
+export type GetArticleSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetArticleSlugsQuery = { __typename?: 'Query', articleCollection?: { __typename?: 'ArticleCollection', items: Array<{ __typename?: 'Article', slug?: string | null } | null> } | null };
 
 export type GetLogsQueryVariables = Exact<{ [key: string]: never; }>;
 
