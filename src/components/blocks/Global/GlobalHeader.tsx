@@ -6,8 +6,6 @@ import {
   Toolbar,
   Container,
   Typography,
-  MenuItem,
-  Menu,
   Box,
   Button,
   Stack,
@@ -32,34 +30,15 @@ const PAGE_LIST = [
 ];
 
 const GlobalHeader: React.FC = () => {
-  const [headerStyle, setHeaderStyle] = React.useState<AppBarProps["sx"]>({});
-  const isScrollTriggered = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  React.useEffect(() => {
-    if (isScrollTriggered) {
-      setHeaderStyle({
-        bgcolor: "white",
-        boxShadow: "0 1px 3px 0 rgba(0,0,0,.12)",
-      });
-    } else {
-      setHeaderStyle({
-        bgcolor: "transparent",
-        boxShadow: "none",
-      });
-    }
-  }, [isScrollTriggered]);
-
   return (
     <AppBar
       elevation={0}
       sx={{
         borderRadius: 0,
         transition: "linear 0.2s",
-        bgcolor: "transparent",
-        ...headerStyle,
+        backdropFilter: "saturate(180%) blur(5px)",
+        background: "hsla(0,0%,100%,.8)",
+        boxShadow: "inset 0 -1px 0 0 #eaeaea",
       }}
     >
       <Container maxWidth="md">
