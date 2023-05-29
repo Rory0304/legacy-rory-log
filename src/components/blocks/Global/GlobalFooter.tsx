@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
@@ -17,8 +18,12 @@ const Footer: React.FC = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography variant="body2">© 2023 Rory</Typography>
-            <RssFeedIcon />
+            <Typography variant="body2">
+              © 2023 Rory. All rights reserved.
+            </Typography>
+            <Link href="/rss.xml">
+              <RssFeedIcon />
+            </Link>
           </Stack>
         </Container>
       </Box>
