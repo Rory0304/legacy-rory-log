@@ -1,17 +1,23 @@
-import { PageSeo, PageHeader, ArticleList } from "src/components/pages";
+import { PageSeo } from "src/components/pages";
 import ArticleTemplate from "src/components/pages/Article/ArticleTemplate";
-import NextScript from "next/script";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
-import { useRouter } from "next/navigation";
-import { getArticles } from "src/app/api/articles/getArticles";
-import { getParsedSearchQuery } from "src/utils/search";
+import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 
 import "github-markdown-css/github-markdown-light.css";
 import "highlight.js/styles/github.css";
 
+// -ref: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
+const dynamicParams = false;
+export { dynamicParams };
+
+export const generateStaticParams = async () => {
+  const slugs = await getArticleSlugs({ preview: false });
+
+  return slugs;
+};
+
 const Article = async ({ params }: { params: { slug: string } }) => {
-  const parsedSlug = getParsedSearchQuery(params.slug) ?? "";
-  const article = await getArticleBySlug({ slug: `/articles/${parsedSlug}` });
+  const article = await getArticleBySlug({ slug: `/articles/${params.slug}` });
 
   return (
     <>
