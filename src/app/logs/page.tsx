@@ -4,13 +4,15 @@ import LogList from "src/components/pages/Logs/LogList";
 
 import { getLogs } from "src/app/api/logs/getLogs";
 
+import "github-markdown-css/github-markdown-light.css";
+
 const Logs = async () => {
   const logs = await getLogs({ preview: false });
   return (
     <>
       <PageSeo
         title="Logs | rory dev"
-        description="I typically write short pieces about personal routines, marathons, lessons learned, and other related topics."
+        description="짧은 고민들을 정리합니다."
       />
       <PageHeader title={"로그"} description="짧은 고민들을 정리합니다." />
       <LogList logList={logs} />
