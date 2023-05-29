@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 //
 
 interface ArticleCategoryProps {
-  tabs: string[];
+  tabs: { [key: string]: number };
   tab: string;
   total: number;
   onChange: (value: string) => void;
@@ -28,15 +28,14 @@ const StyledTab = styled(Tab)`
   padding: 0;
   margin-right: 1rem;
   transition: all 0.15s;
+  font-weight: 600;
 
   &:hover {
     color: #333d4b;
-    font-weight: bold;
   }
 
   &.Mui-selected {
     color: #333d4b;
-    font-weight: bold;
   }
 `;
 
@@ -46,6 +45,8 @@ const ArticleTabs: React.FC<ArticleCategoryProps> = ({
   total,
   onChange,
 }) => {
+  const tabsKey = Object.keys(tabs);
+
   return (
     <Tabs
       value={tab}
@@ -58,8 +59,13 @@ const ArticleTabs: React.FC<ArticleCategoryProps> = ({
       }}
     >
       <StyledTab disableRipple value={"All"} label={`전체 (${total})`} />
-      {tabs.map((tab) => (
-        <StyledTab disableRipple value={tab} label={tab} key={tab} />
+      {tabsKey.map((tab) => (
+        <StyledTab
+          disableRipple
+          value={tab}
+          label={`${tab} ${tabs[tab] ? `(${tabs[tab]})` : null}`}
+          key={tab}
+        />
       ))}
     </Tabs>
   );

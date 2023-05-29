@@ -15,8 +15,6 @@ import {
   Pagination,
   Box,
   Chip,
-  Button,
-  Tabs,
   Tab,
 } from "@mui/material";
 
@@ -31,7 +29,7 @@ const ARTICLES_PER_PAGE = 10;
 
 interface ArticleListProps {
   articleList: ArticleType[];
-  tabList: string[];
+  tabList: { [key: string]: number };
 }
 
 const StyledTab = styled(Tab)`
@@ -80,7 +78,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
   }, [selectedTab]);
 
   return (
-    <Box paddingY={4}>
+    <Box paddingY={6}>
       <ArticleTabs
         tabs={tabList}
         tab={selectedTab}
@@ -94,7 +92,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
             : "";
 
           return article.slug ? (
-            <Link href={article.slug} key={`article-${index}`}>
+            <Link href={`/articles/${article.slug}`} key={`article-${index}`}>
               <ListItem disablePadding divider>
                 <Card
                   sx={{
