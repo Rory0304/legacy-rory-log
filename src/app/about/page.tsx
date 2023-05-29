@@ -49,6 +49,7 @@ export default function About() {
       >
         <Box>
           <Image
+            priority
             src="/profile-illu.png"
             alt="profile image"
             width={270}
