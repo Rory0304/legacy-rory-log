@@ -3,7 +3,7 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface PageSeoProps {
   title: string;
