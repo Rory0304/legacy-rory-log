@@ -9,12 +9,12 @@ import {
 
 import { getFetchPolicy } from "src/utils/getFetchPolicy";
 
-const generateSlugWithSlash = (slug: string | null | undefined) => {
+const generateSlugWithoutSlash = (slug: string | null | undefined) => {
   if (!slug) return "";
 
-  if (slug.startsWith("/")) return slug;
+  if (slug.startsWith("/")) return slug.replace("/", "");
 
-  return `/${slug}`;
+  return slug;
 };
 
 export const getArticleSlugs = async ({
@@ -30,7 +30,7 @@ export const getArticleSlugs = async ({
 
   const articleSlugs =
     data.articleCollection?.items.map((item) => ({
-      slug: generateSlugWithSlash(item?.slug),
+      slug: generateSlugWithoutSlash(item?.slug),
     })) ?? [];
 
   return articleSlugs;
