@@ -9,7 +9,6 @@ export const POST = async (req: NextRequest) => {
     req.method !== "POST" ||
     req.headers.get("x-rorydev-content-header") !== ACCESS_TOKEN
   ) {
-    console.log(req.headers.get("x--contentful-topic"), req.method);
     return NextResponse.json({ message: "Invalid request" }, { status: 400 });
   }
 
