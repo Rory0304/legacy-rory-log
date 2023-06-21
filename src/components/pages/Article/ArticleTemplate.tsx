@@ -1,8 +1,7 @@
 "use client";
-
+import React from "react";
 import {
   Typography,
-  Container,
   Box,
   Chip,
   Button,
@@ -12,11 +11,11 @@ import {
   Avatar,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import { isNullableType } from "graphql";
 import Image from "next/image";
 import Link from "next/link";
 import { contactInfo } from "src/constants/contact";
 import { ArticleType } from "src/app/api/article/getArticle";
+
 //
 //
 //
@@ -40,10 +39,14 @@ const StyledMarkdownTemplate = styled(Box)`
 const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
   const { title, slug, content, category, thumbnail, date } = article;
 
-  const localizedDate = new Date(date).toLocaleDateString();
+  const [localizedDate, setLocalizedDate] = React.useState(date);
+
+  React.useEffect(() => {
+    setLocalizedDate(new Date(date).toLocaleDateString());
+  }, [date]);
 
   return (
-    <article>
+    <article className='article-template'>
       <Box
         component="header"
         sx={{
@@ -90,7 +93,6 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
           >
             {title}
           </Typography>
-          {/* ref: https://ko.legacy.reactjs.org/docs/dom-elements.html#suppresshydrationwarning */}
           <Typography variant="caption" color="GrayText">
             <time dateTime={localizedDate} suppressHydrationWarning>
               {localizedDate}
