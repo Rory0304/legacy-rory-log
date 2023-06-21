@@ -59,8 +59,7 @@ const GlobalHeader: React.FC = () => {
                   fontWeight={800}
                   sx={{ marginY: 2, display: "block", color: "black" }}
                 >
-                  Rory<span style={{ color: "coral" }}>-</span>
-                  Dev
+                  RD
                 </Typography>
               </Link>
             </Box>
