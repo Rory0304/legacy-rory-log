@@ -319,6 +319,7 @@ export type AssetLinkingCollections = {
 export type AssetLinkingCollectionsArticleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsArticleCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -335,9 +336,42 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 export type AssetLinkingCollectionsLogCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<AssetLinkingCollectionsLogCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+export enum AssetLinkingCollectionsArticleCollectionOrder {
+  CategoryAsc = 'category_ASC',
+  CategoryDesc = 'category_DESC',
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum AssetLinkingCollectionsLogCollectionOrder {
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  YoutubeUrlAsc = 'youtubeUrl_ASC',
+  YoutubeUrlDesc = 'youtubeUrl_DESC'
+}
 
 export enum AssetOrder {
   ContentTypeAsc = 'contentType_ASC',
@@ -994,7 +1028,7 @@ export const GetArticlesDocument = gql`
     ${ArticleFieldsFragmentDoc}`;
 export const GetArticleSlugsDocument = gql`
     query GetArticleSlugs {
-  articleCollection {
+  articleCollection(order: date_DESC) {
     items {
       slug
     }
