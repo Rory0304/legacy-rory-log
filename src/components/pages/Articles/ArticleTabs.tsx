@@ -21,7 +21,7 @@ interface ArticleCategoryProps {
 
 const StyledTab = styled(Tab)`
   border-bottom: 0;
-  text-transform: capitalize;
+  text-transform: none;
   font-size: 1.25rem;
   color: #d1d6db;
   min-width: 0;
