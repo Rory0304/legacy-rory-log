@@ -15,7 +15,7 @@ export const GET_ARTICLES = gql`
 
 export const GET_ARTICLE_SLUGS = gql`
   query GetArticleSlugs {
-    articleCollection {
+    articleCollection(order: date_DESC) {
       items {
         slug
       }
