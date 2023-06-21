@@ -1,5 +1,5 @@
 import { PageSeo } from "src/components/pages";
-import ArticleTemplate from "src/components/pages/Article/ArticleTemplate";
+import { ArticleComment, ArticleTemplate } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 
@@ -17,7 +17,7 @@ export const generateStaticParams = async () => {
 };
 
 const Article = async ({ params }: { params: { slug: string } }) => {
-  const article = await getArticleBySlug({ slug: `/articles/${params.slug}` });
+  const article = await getArticleBySlug({ slug: params.slug });
 
   return (
     <>
@@ -26,6 +26,7 @@ const Article = async ({ params }: { params: { slug: string } }) => {
         description=" Mainly handle development-related knowledge and project retrospectives."
       />
       <ArticleTemplate article={article} />
+      <ArticleComment />
     </>
   );
 };
