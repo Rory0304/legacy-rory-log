@@ -12,9 +12,12 @@ const Logs = async () => {
     <>
       <PageSeo
         title="Logs | rory dev"
-        description="짧은 고민들을 정리합니다."
+        description="커리어, 가치관, 루틴에 관한 짧은 고민들을 정리합니다."
       />
-      <PageHeader title={"로그"} description="짧은 고민들을 정리합니다." />
+      <PageHeader
+        title={"로그"}
+        description="커리어, 가치관, 루틴에 관한 짧은 고민들을 정리합니다."
+      />
       <LogList logList={logs} />
     </>
   );
