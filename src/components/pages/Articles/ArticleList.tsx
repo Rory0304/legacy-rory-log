@@ -20,6 +20,7 @@ import {
 
 import ArticleTabs from "./ArticleTabs";
 import { ArticleType } from "src/app/api/articles/getArticles";
+import { generateSlugWithoutSlash } from "src/app/api/articles/getArticleSlugs";
 
 //
 //
@@ -31,27 +32,6 @@ interface ArticleListProps {
   articleList: ArticleType[];
   tabList: { [key: string]: number };
 }
-
-const StyledTab = styled(Tab)`
-  border-bottom: 0;
-  text-transform: capitalize;
-  font-size: 1.25rem;
-  color: #d1d6db;
-  min-width: 0;
-  padding: 0;
-  margin-right: 1rem;
-  transition: all 0.15s;
-
-  &:hover {
-    color: #333d4b;
-    font-weight: bold;
-  }
-
-  &.Mui-selected {
-    color: #333d4b;
-    font-weight: bold;
-  }
-`;
 
 const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
   const [page, setPage] = React.useState(1);
@@ -92,7 +72,10 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
             : "";
 
           return article.slug ? (
-            <Link href={`/articles/${article.slug}`} key={`article-${index}`}>
+            <Link
+              href={`/articles/${generateSlugWithoutSlash(article.slug)}`}
+              key={`article-${index}`}
+            >
               <ListItem disablePadding divider>
                 <Card
                   sx={{

@@ -9,7 +9,7 @@ import {
 
 import { getFetchPolicy } from "src/utils/getFetchPolicy";
 
-const generateSlugWithoutSlash = (slug: string | null | undefined) => {
+export const generateSlugWithoutSlash = (slug: string | null | undefined) => {
   if (!slug) return "";
 
   if (slug.startsWith("/")) return slug.replace("/", "");
