@@ -4,7 +4,8 @@ import LogList from "src/components/pages/Logs/LogList";
 
 import { getLogs } from "src/app/api/logs/getLogs";
 
-import "github-markdown-css/github-markdown-light.css";
+import "src/styles/github-markdown-dark.css";
+import "src/styles/github-markdown-light.css";
 
 const Logs = async () => {
   const logs = await getLogs({ preview: false });

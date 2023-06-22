@@ -3,8 +3,8 @@ import { ArticleComment, ArticleTemplate } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 
-import "github-markdown-css/github-markdown-light.css";
-import "highlight.js/styles/github.css";
+import "src/styles/github-markdown-dark.css";
+import "src/styles/github-markdown-light.css";
 
 // -ref: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 const dynamicParams = false;
