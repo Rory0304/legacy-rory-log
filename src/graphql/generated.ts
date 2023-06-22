@@ -27,6 +27,7 @@ export type Article = Entry & {
   content?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   date?: Maybe<Scalars['DateTime']['output']>;
+  featured?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<ArticleLinkingCollections>;
   slug?: Maybe<Scalars['String']['output']>;
   sys: Sys;
@@ -49,6 +50,12 @@ export type ArticleContentArgs = {
 
 /** [See type definition](https://app.contentful.com/spaces/98cksird3kze/content_types/article) */
 export type ArticleDateArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/98cksird3kze/content_types/article) */
+export type ArticleFeaturedArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -112,6 +119,9 @@ export type ArticleFilter = {
   date_lte?: InputMaybe<Scalars['DateTime']['input']>;
   date_not?: InputMaybe<Scalars['DateTime']['input']>;
   date_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  featured?: InputMaybe<Scalars['Boolean']['input']>;
+  featured_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  featured_not?: InputMaybe<Scalars['Boolean']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   slug_contains?: InputMaybe<Scalars['String']['input']>;
   slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -148,6 +158,8 @@ export enum ArticleOrder {
   CategoryDesc = 'category_DESC',
   DateAsc = 'date_ASC',
   DateDesc = 'date_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -346,6 +358,8 @@ export enum AssetLinkingCollectionsArticleCollectionOrder {
   CategoryDesc = 'category_DESC',
   DateAsc = 'date_ASC',
   DateDesc = 'date_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -802,12 +816,13 @@ export type SysFilter = {
   publishedVersion_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
 };
 
-export type ArticleKeySpecifier = ('category' | 'content' | 'contentfulMetadata' | 'date' | 'linkedFrom' | 'slug' | 'sys' | 'thumbnail' | 'title' | ArticleKeySpecifier)[];
+export type ArticleKeySpecifier = ('category' | 'content' | 'contentfulMetadata' | 'date' | 'featured' | 'linkedFrom' | 'slug' | 'sys' | 'thumbnail' | 'title' | ArticleKeySpecifier)[];
 export type ArticleFieldPolicy = {
 	category?: FieldPolicy<any> | FieldReadFunction<any>,
 	content?: FieldPolicy<any> | FieldReadFunction<any>,
 	contentfulMetadata?: FieldPolicy<any> | FieldReadFunction<any>,
 	date?: FieldPolicy<any> | FieldReadFunction<any>,
+	featured?: FieldPolicy<any> | FieldReadFunction<any>,
 	linkedFrom?: FieldPolicy<any> | FieldReadFunction<any>,
 	slug?: FieldPolicy<any> | FieldReadFunction<any>,
 	sys?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -1035,6 +1050,15 @@ export const GetArticleSlugsDocument = gql`
   }
 }
     `;
+export const GetFeaturedArticlesDocument = gql`
+    query GetFeaturedArticles {
+  articleCollection(where: {featured: true}, order: date_DESC) {
+    items {
+      ...ArticleFields
+    }
+  }
+}
+    ${ArticleFieldsFragmentDoc}`;
 export const GetLogsDocument = gql`
     query GetLogs {
   logCollection {
@@ -1064,6 +1088,11 @@ export type GetArticleSlugsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetArticleSlugsQuery = { __typename?: 'Query', articleCollection?: { __typename?: 'ArticleCollection', items: Array<{ __typename?: 'Article', slug?: string | null } | null> } | null };
+
+export type GetFeaturedArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetFeaturedArticlesQuery = { __typename?: 'Query', articleCollection?: { __typename?: 'ArticleCollection', items: Array<{ __typename?: 'Article', title?: string | null, slug?: string | null, content?: string | null, category?: string | null, date?: any | null, sys: { __typename?: 'Sys', id: string }, thumbnail?: { __typename?: 'Asset', url?: string | null } | null } | null> } | null };
 
 export type GetLogsQueryVariables = Exact<{ [key: string]: never; }>;
 
