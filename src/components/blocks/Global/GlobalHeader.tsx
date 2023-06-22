@@ -9,27 +9,31 @@ import {
   Box,
   Button,
   Stack,
-  useScrollTrigger,
+  IconButton,
 } from "@mui/material";
-import type { AppBarProps } from "@mui/material";
 import Link from "next/link";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
+import useColorMode from "src/hooks/useColorMode";
+
+//
+//
+//
 const PAGE_LIST = [
   {
     title: "Articles",
-    url: "/",
+    url: "/articles",
   },
   {
     title: "Logs",
     url: "/logs",
   },
-  {
-    title: "About",
-    url: "/about",
-  },
 ];
 
 const GlobalHeader: React.FC = () => {
+  const { isDarkMode, toggleColorMode } = useColorMode();
+
   return (
     <AppBar
       elevation={0}
@@ -37,33 +41,33 @@ const GlobalHeader: React.FC = () => {
         borderRadius: 0,
         transition: "linear 0.2s",
         backdropFilter: "saturate(180%) blur(5px)",
-        background: "hsla(0,0%,100%,.8)",
-        boxShadow: "inset 0 -1px 0 0 #eaeaea",
+        background: isDarkMode ? "rgba(0,0,0,.5)" : "hsla(0,0%,100%,.8)",
+        boxShadow: isDarkMode
+          ? "inset 0 -1px 0 0 hsla(0,0%,100%,.1)"
+          : "inset 0 -1px 0 0 #eaeaea",
       }}
     >
       <Container maxWidth="md">
         <Toolbar disableGutters>
-          <Box
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            rowGap={1}
             sx={{
               flexGrow: 1,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
             }}
           >
-            <Box>
-              <Link passHref href="/">
-                <Typography
-                  component="h1"
-                  fontSize={24}
-                  fontWeight={800}
-                  sx={{ marginY: 2, display: "block", color: "black" }}
-                >
-                  RD
-                </Typography>
-              </Link>
-            </Box>
-            <Stack direction="row" rowGap={1}>
+            <Stack direction="row" alignItems="center">
+              <Box>
+                <Link passHref href="/">
+                  <Button color="neutral">
+                    <Typography component="h1" fontSize={24} fontWeight={800}>
+                      🌱
+                    </Typography>
+                  </Button>
+                </Link>
+              </Box>
               {PAGE_LIST.map((page) => (
                 <Link passHref href={page.url} key={page.title}>
                   <Button
@@ -71,7 +75,7 @@ const GlobalHeader: React.FC = () => {
                     sx={{
                       my: 2,
                       display: "block",
-                      color: "black",
+                      color: isDarkMode ? "white" : "black",
                       textTransform: "initial",
                     }}
                   >
@@ -80,7 +84,16 @@ const GlobalHeader: React.FC = () => {
                 </Link>
               ))}
             </Stack>
-          </Box>
+            <Stack>
+              <IconButton onClick={toggleColorMode} color="inherit">
+                {isDarkMode ? (
+                  <DarkModeIcon sx={{ color: "#FDD835" }} />
+                ) : (
+                  <LightModeIcon sx={{ color: "#FDD835" }} />
+                )}
+              </IconButton>
+            </Stack>
+          </Stack>
         </Toolbar>
       </Container>
     </AppBar>
