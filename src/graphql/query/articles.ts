@@ -22,3 +22,15 @@ export const GET_ARTICLE_SLUGS = gql`
     }
   }
 `;
+
+export const GET_FEATURED_ARTICLES = gql`
+  query GetFeaturedArticles {
+    articleCollection(where: { featured: true }, order: date_DESC) {
+      items {
+        ...ArticleFields
+      }
+    }
+  }
+
+  ${FRAGMENT_ARTICLE}
+`;
