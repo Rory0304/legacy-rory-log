@@ -1,14 +1,12 @@
-
-import { css } from '@emotion/react';
-
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+import { css } from "@emotion/react";
 
 export const resetStyles = css`
- a {
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a {
     color: inherit;
     text-decoration: none;
   }
-`
+`;
