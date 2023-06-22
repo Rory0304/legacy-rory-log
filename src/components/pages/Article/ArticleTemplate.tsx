@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import {
   Typography,
@@ -26,6 +27,7 @@ interface ArticleTemplateProps {
 
 const StyledMarkdownTemplate = styled(Box)`
   padding-bottom: 4rem;
+  background-color: transparent;
 
   &.markdown-body {
     menu,
@@ -37,7 +39,7 @@ const StyledMarkdownTemplate = styled(Box)`
 `;
 
 const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
-  const { title, slug, content, category, thumbnail, date } = article;
+  const { title, content, category, thumbnail, date } = article;
 
   const [localizedDate, setLocalizedDate] = React.useState(date);
 
@@ -46,7 +48,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
   }, [date]);
 
   return (
-    <article className='article-template'>
+    <article className="article-template">
       <Box
         component="header"
         sx={{
