@@ -29,14 +29,6 @@ const StyledTab = styled(Tab)`
   margin-right: 1rem;
   transition: all 0.15s;
   font-weight: 600;
-
-  &:hover {
-    color: #333d4b;
-  }
-
-  &.Mui-selected {
-    color: #333d4b;
-  }
 `;
 
 const ArticleTabs: React.FC<ArticleCategoryProps> = ({
