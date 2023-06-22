@@ -4,8 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import styled from "@emotion/styled";
-
 import {
   Typography,
   Card,
@@ -15,7 +13,6 @@ import {
   Pagination,
   Box,
   Chip,
-  Tab,
 } from "@mui/material";
 
 import ArticleTabs from "./ArticleTabs";
@@ -82,6 +79,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList, tabList }) => {
                     display: "flex",
                     flexGrow: 1,
                     justifyContent: "space-between",
+                    background: "transparent",
                     boxShadow: "none",
                     paddingY: 4,
                     borderRadius: 0,
