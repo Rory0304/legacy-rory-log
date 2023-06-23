@@ -7,8 +7,6 @@
     "develop": "next dev",
     "build": "next build && next export",
     "postbuild": "next-sitemap && yarn rss",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles",
     "start": "next start",
     "lint": "next lint",
     "codegen": "env-cmd -f .env.local graphql-codegen --config codegen.ts",
