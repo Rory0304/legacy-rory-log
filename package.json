@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "run-p develop codegen",
+    "dev": "run-p develop codegen rss",
     "develop": "next dev",
     "build": "next build && next export",
-    "postbuild": "next-sitemap && yarn rss",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "codegen": "env-cmd -f .env.local graphql-codegen --config codegen.ts",
-    "rss": "ts-node --project tsconfig.node.json -r tsconfig-paths/register ./script/rss.ts"
+    "rss": "env-cmd -f .env.local ts-node --project tsconfig.node.json -r tsconfig-paths/register ./script/rss.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",
