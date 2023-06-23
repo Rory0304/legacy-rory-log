@@ -16,7 +16,7 @@ jobs:
         run: |
           yarn install
           yarn build && touch ./out/.nojekyll
-          yarn postBuild
+          yarn postbuild
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
