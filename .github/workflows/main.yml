@@ -32,5 +32,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.GH_ACTIONS_TOKEN }}
+          repository-name: Rory0304/rory0304.github.io
           branch: gh-pages
           folder: out
