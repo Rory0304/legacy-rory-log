@@ -14,7 +14,7 @@ const StyledArticleCommentSection = styled.section`
 
 const UTTERANCES_CONFIG = {
   src: "https://utteranc.es/client.js",
-  repo: "Rory0304/rory-dev",
+  repo: "Rory0304/rory0304.github.io",
   issueTerm: "pathname",
   theme: "github-light",
   crossorigin: "anonymous",
