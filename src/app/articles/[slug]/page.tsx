@@ -1,10 +1,11 @@
 import { PageSeo } from "src/components/pages";
-import { ArticleComment, ArticleTemplate } from "src/components/pages/Article";
+import { ArticleComment, ArticleLayout } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 
 import "src/styles/github-markdown-dark.css";
 import "src/styles/github-markdown-light.css";
+import "highlight.js/styles/atom-one-dark.css";
 
 // -ref: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 const dynamicParams = false;
@@ -25,7 +26,7 @@ const Article = async ({ params }: { params: { slug: string } }) => {
         title="Articles | rory dev"
         description=" Mainly handle development-related knowledge and project retrospectives."
       />
-      <ArticleTemplate article={article} />
+      <ArticleLayout article={article} />
       <ArticleComment />
     </>
   );

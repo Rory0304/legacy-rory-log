@@ -36,8 +36,12 @@ const Footer: React.FC = () => {
 
   return (
     <footer>
-      <Box paddingX={3} paddingY={5} borderTop={(theme) => `1px solid ${theme.palette.divider}`}>
-        <Container maxWidth="md">
+      <Box
+        paddingX={3}
+        paddingY={5}
+        borderTop={(theme) => `1px solid ${theme.palette.divider}`}
+      >
+        <Container maxWidth="lg">
           <Stack
             direction="row"
             justifyContent="space-between"

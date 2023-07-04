@@ -1,4 +1,4 @@
-"use Client";
+"use client";
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -22,13 +22,13 @@ interface ArticleCategoryProps {
 const StyledTab = styled(Tab)`
   border-bottom: 0;
   text-transform: none;
-  font-size: 1.25rem;
-  color: #d1d6db;
   min-width: 0;
+  min-height: 32px;
   padding: 0;
-  margin-right: 1rem;
+  font-size: 1rem;
   transition: all 0.15s;
   font-weight: 600;
+  align-items: flex-start;
 `;
 
 const ArticleTabs: React.FC<ArticleCategoryProps> = ({
@@ -42,6 +42,7 @@ const ArticleTabs: React.FC<ArticleCategoryProps> = ({
   return (
     <Tabs
       value={tab}
+      orientation="vertical"
       variant="scrollable"
       onChange={(_, value) => onChange(value)}
       TabIndicatorProps={{

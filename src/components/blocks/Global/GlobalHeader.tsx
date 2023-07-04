@@ -47,7 +47,7 @@ const GlobalHeader: React.FC = () => {
           : "inset 0 -1px 0 0 #eaeaea",
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Stack
             direction="row"

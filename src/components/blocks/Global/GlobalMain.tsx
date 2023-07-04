@@ -10,7 +10,7 @@ interface GlobalMainProps {
 const GlobalMain: React.FC<GlobalMainProps> = ({ children }) => {
   return (
     <main>
-      <Container maxWidth="md" sx={{ paddingY: 8 }}>
+      <Container maxWidth="lg" sx={{ paddingY: 8 }}>
         {children}
       </Container>
     </main>

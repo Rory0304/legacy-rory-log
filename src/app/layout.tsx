@@ -19,20 +19,6 @@ export default function RootLayout({
           crossOrigin=""
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"
         />
-        <link
-          rel="stylesheet"
-          as="style"
-          crossOrigin=""
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css"
-          title="light"
-        />
-        <link
-          rel="stylesheet"
-          as="style"
-          crossOrigin=""
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css"
-          title="dark"
-        />
         <link rel="icon" href={`/favicon.ico`} />
       </head>
 

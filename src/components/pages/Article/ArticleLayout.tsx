@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import {
   Typography,
   Box,
@@ -11,34 +12,21 @@ import {
   Stack,
   Avatar,
 } from "@mui/material";
-import styled from "@emotion/styled";
 import Image from "next/image";
 import Link from "next/link";
 import { contactInfo } from "src/constants/contact";
 import { ArticleType } from "src/app/api/article/getArticle";
+import MarkdownTemplate from "./MarkdownTemplate";
 
 //
 //
 //
 
-interface ArticleTemplateProps {
+interface ArticleLayoutProps {
   article: ArticleType;
 }
 
-const StyledMarkdownTemplate = styled(Box)`
-  padding-bottom: 4rem;
-  background-color: transparent;
-
-  &.markdown-body {
-    menu,
-    ol,
-    ul {
-      list-style: revert;
-    }
-  }
-`;
-
-const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
+const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
   const { title, content, category, thumbnail, date } = article;
 
   const [localizedDate, setLocalizedDate] = React.useState(date);
@@ -101,10 +89,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
             </time>
           </Typography>
         </Box>
-        <StyledMarkdownTemplate
-          className="markdown-body"
-          dangerouslySetInnerHTML={{ __html: (content ?? "") as string }}
-        />
+        <MarkdownTemplate content={content ?? ""} />
         <Divider />
         <Box marginTop={3}>
           <Typography variant="h6" fontWeight={700} marginBottom={1}>
@@ -143,7 +128,7 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
         </Box>
       </Box>
       <Box paddingTop={10} textAlign="center">
-        <Link passHref href="/">
+        <Link passHref href="/articles">
           <Button
             disableElevation
             LinkComponent={"a"}
@@ -166,4 +151,4 @@ const ArticleTemplate: React.FC<ArticleTemplateProps> = ({ article }) => {
   );
 };
 
-export default ArticleTemplate;
+export default ArticleLayout;

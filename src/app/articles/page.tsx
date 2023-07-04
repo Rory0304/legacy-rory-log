@@ -1,5 +1,5 @@
 import React from "react";
-import { PageSeo, ArticleList } from "src/components/pages";
+import { PageSeo, PageHeader, ArticlesLayout } from "src/components/pages";
 
 import { getArticles } from "src/app/api/articles/getArticles";
 
@@ -24,10 +24,14 @@ const Articles = async () => {
   return (
     <>
       <PageSeo
-        title="Articles | rory dev"
+        title="Article | rory dev"
         description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
       />
-      <ArticleList articleList={articles} tabList={tabList} />
+      <PageHeader
+        title={"Article"}
+        description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
+      />
+      <ArticlesLayout articleList={articles} tabList={tabList} />
     </>
   );
 };
