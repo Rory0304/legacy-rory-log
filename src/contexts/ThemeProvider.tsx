@@ -45,6 +45,17 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     palette: {
       mode,
       ...palette,
+      ...(mode === "light"
+        ? {
+            background: {
+              default: "#fff",
+            },
+          }
+        : {
+            background: {
+              default: "rgb(23 23 23/1)",
+            },
+          }),
     },
   });
 
