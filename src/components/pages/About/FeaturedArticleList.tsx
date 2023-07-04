@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { Box, Stack, CardContent, Card, Typography } from "@mui/material";
 import Link from "next/link";
 import { ArticleType } from "src/app/api/articles/getArticles";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { fadeInSlideToLeft } from "src/constants/styles/animation";
 
 interface FeaturedArticleListProps {
   featuredArticleList: ArticleType[];
@@ -100,8 +102,16 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
       <Typography component="h1" variant="h4" fontWeight={700} marginBottom={3}>
         추천 아티클
       </Typography>
+
       <Stack
-        component="ul"
+        component={motion.ul}
+        initial="initial"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: { staggerChildren: 0.1, delayChildren: 0.02 },
+          },
+        }}
         sx={{
           display: "grid",
           gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
@@ -109,10 +119,13 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
           rowGap: 4,
         }}
       >
-        {featuredArticleList.slice(0, 6).map((article, index) => (
-          <li key={`featured-article-${index}`}>
+        {featuredArticleList.slice(0, 3).map((article, index) => (
+          <motion.li
+            key={`featured-article-${index}`}
+            variants={fadeInSlideToLeft}
+          >
             <FeaturedArticleCard {...article} />
-          </li>
+          </motion.li>
         ))}
       </Stack>
     </Box>
