@@ -25,10 +25,6 @@ const PAGE_LIST = [
     title: "Articles",
     url: "/articles",
   },
-  {
-    title: "Logs",
-    url: "/logs",
-  },
 ];
 
 const GlobalHeader: React.FC = () => {
