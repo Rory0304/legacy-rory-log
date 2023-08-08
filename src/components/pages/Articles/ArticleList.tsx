@@ -10,9 +10,8 @@ import {
   CardContent,
   List,
   ListItem,
-  Pagination,
-  Box,
   Chip,
+  Box,
 } from "@mui/material";
 
 import { ArticleType } from "src/app/api/articles/getArticles";
@@ -21,8 +20,6 @@ import { generateSlugWithoutSlash } from "src/app/api/articles/getArticleSlugs";
 //
 //
 //
-
-const ARTICLES_PER_PAGE = 10;
 
 interface ArticleListProps {
   articleList: ArticleType[];
@@ -46,12 +43,10 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
 
         return article.slug ? (
           <ListItem disablePadding divider key={`article-${index}`}>
-            <Link
-              href={`/articles/${generateSlugWithoutSlash(article.slug)}`}
-
-            >
+            <Link href={`/articles/${generateSlugWithoutSlash(article.slug)}`}>
               <Card
                 sx={{
+                  width: "100%",
                   display: "flex",
                   flexGrow: 1,
                   justifyContent: "space-between",
@@ -68,7 +63,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                   },
                 }}
               >
-                <CardContent sx={{ padding: 0, marginRight: 4 }}>
+                <CardContent sx={{ padding: 0, marginRight: { xs: 0, sm: 4 } }}>
                   <Chip
                     label={article.category}
                     size="small"
@@ -98,7 +93,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                       WebkitBoxOrient: "vertical",
                     }}
                   >
-                    {article.content}
+                    {(article.content ?? "").substring(0, 300)}
                   </Typography>
                   <Typography
                     component="span"
@@ -111,15 +106,17 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                   </Typography>
                 </CardContent>
                 {article.thumbnail?.url ? (
-                  <Image
-                    src={article.thumbnail.url}
-                    alt=""
-                    width={180}
-                    height={180}
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
+                  <Box display={{ xs: "none", sm: "block" }}>
+                    <Image
+                      src={article.thumbnail.url}
+                      alt=""
+                      width={180}
+                      height={180}
+                      style={{
+                        objectFit: "cover",
+                      }}
+                    />
+                  </Box>
                 ) : null}
               </Card>
             </Link>

@@ -2,19 +2,24 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeIn, staggerImmediate } from "src/constants/styles/animation";
 
 import { Stack, Box, Typography } from "@mui/material";
 
 const AboutMe: React.FC = () => {
   return (
     <Stack
-      direction="row"
-      component="article"
-      alignItems="center"
+      direction={{ xs: "column", sm: "row" }}
+      component={motion.article}
+      initial="initial"
+      animate="animate"
+      alignItems={{ xs: "flex-start", sm: "center" }}
       columnGap={3}
       paddingY={10}
+      variants={staggerImmediate}
     >
-      <Box>
+      <Box component={motion.div} variants={fadeIn}>
         <Image
           src="/profile-avatar.svg"
           alt="profile-avatar"
@@ -24,18 +29,20 @@ const AboutMe: React.FC = () => {
       </Box>
       <Box>
         <Typography
-          component="h1"
+          component={motion.h1}
           variant="h4"
           fontWeight={800}
           marginBottom={1}
-        >{`안녕하세요, 로리입니다. `}</Typography>
+          variants={fadeIn}
+        >{`안녕하세요, 로리입니다.`}</Typography>
         <Typography
-          component="p"
+          component={motion.p}
           variant="h6"
           color="GrayText"
           whiteSpace="pre-line"
           fontWeight={400}
-        >{`글쓰기를 즐겨하는 프론트엔드 개발자입니다. \n 최근에는 인디 웹 개발자로 활동하며, 다양한 프로젝트를 진행해보고 있습니다.`}</Typography>
+          variants={fadeIn}
+        >{`글쓰기를 즐겨하는 프론트엔드 개발자입니다. \n 동료와 사용자에게 도움을 주는 것에 개발의 동기를 얻습니다.`}</Typography>
       </Box>
     </Stack>
   );

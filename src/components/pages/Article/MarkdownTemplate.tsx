@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 const StyledMarkdownTemplate = styled(Box)`
   padding-bottom: 4rem;
   background-color: transparent;
-
   &.markdown-body {
     menu,
     ol,

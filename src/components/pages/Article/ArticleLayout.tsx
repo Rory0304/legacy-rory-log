@@ -42,7 +42,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
         sx={{
           display: "flex",
           width: "100%",
-          height: 385,
+          height: 322,
         }}
       >
         <Box
@@ -73,7 +73,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
         </Box>
       </Box>
       <Box>
-        <Box paddingBottom={4}>
+        <Box paddingY={6}>
           <Chip label={category} sx={{ borderRadius: 4, marginBottom: 1 }} />
           <Typography
             component="h1"
@@ -83,7 +83,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
           >
             {title}
           </Typography>
-          <Typography variant="caption" color="GrayText">
+          <Typography variant="body1" color="GrayText">
             <time dateTime={localizedDate} suppressHydrationWarning>
               {localizedDate}
             </time>

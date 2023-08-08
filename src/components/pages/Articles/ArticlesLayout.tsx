@@ -102,8 +102,8 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
         />
       </Box>
 
-      <Box display="flex">
-        <Box sx={{ flex: "0 0 auto", paddingRight: 6 }}>
+      <Box display="flex" flexDirection={{ xs: "column", md: "row" }}>
+        <Box sx={{ flex: "0 0 auto", paddingRight: {xs: 0, md: 6 }}}>
           <Typography variant="h6" fontWeight={700} sx={{ paddingBottom: 2 }}>
             <Typography component="span" sx={{ marginRight: 1 }}>
               🏷️

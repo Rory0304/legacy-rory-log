@@ -1,9 +1,10 @@
 "use client";
 
+import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import styled from "@emotion/styled";
-
+import { useMediaQueryContext } from "src/contexts/MediaQueryProvider";
+import styled from "@mui/material/styles/styled";
 //
 //
 //
@@ -19,17 +20,21 @@ interface ArticleCategoryProps {
 //
 //
 
-const StyledTab = styled(Tab)`
-  border-bottom: 0;
-  text-transform: none;
-  min-width: 0;
-  min-height: 32px;
-  padding: 0;
-  font-size: 1rem;
-  transition: all 0.15s;
-  font-weight: 600;
-  align-items: flex-start;
-`;
+const StyledTab = styled(Tab)(({ theme }) => ({
+  borderBottom: 0,
+  textTransfrom: "none",
+  minWidth: 0,
+  minHeight: "32px",
+  padding: 0,
+  fontSize: "1rem",
+  transition: "all 0.15s",
+  fontWeight: 600,
+  alignItems: "flex-start",
+
+  [theme.breakpoints.down("md")]: {
+    marginRight: "1rem",
+  },
+}));
 
 const ArticleTabs: React.FC<ArticleCategoryProps> = ({
   tabs,
@@ -37,14 +42,16 @@ const ArticleTabs: React.FC<ArticleCategoryProps> = ({
   total,
   onChange,
 }) => {
+  const { mobileOrSmaller } = useMediaQueryContext();
   const tabsKey = Object.keys(tabs);
 
   return (
     <Tabs
       value={tab}
-      orientation="vertical"
+      orientation={mobileOrSmaller ? "horizontal" : "vertical"}
       variant="scrollable"
       onChange={(_, value) => onChange(value)}
+      scrollButtons={false}
       TabIndicatorProps={{
         sx: {
           display: "none",
