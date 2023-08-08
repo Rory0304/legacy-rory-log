@@ -3,7 +3,7 @@ import {
   GlobalHeader,
   GlobalFooter,
 } from "src/components/blocks/Global";
-import { AppProvider, ThemeProvider } from "src/contexts";
+import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
 
 export default function RootLayout({
   children,
@@ -14,21 +14,23 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link
-          rel="stylesheet"
+          rel="stylesheet preload"
           as="style"
           crossOrigin=""
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
         />
         <link rel="icon" href={`/favicon.ico`} />
       </head>
 
       <AppProvider>
         <ThemeProvider>
-          <body>
-            <GlobalHeader />
-            <GlobalMain>{children}</GlobalMain>
-            <GlobalFooter />
-          </body>
+          <MediaQueryProvider>
+            <body>
+              <GlobalHeader />
+              <GlobalMain>{children}</GlobalMain>
+              <GlobalFooter />
+            </body>
+          </MediaQueryProvider>
         </ThemeProvider>
       </AppProvider>
     </html>
