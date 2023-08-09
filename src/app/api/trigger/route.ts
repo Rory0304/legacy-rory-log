@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
 const ACCESS_TOKEN =
@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: "Slug not found" }, { status: 400 });
   }
 
-  Promise.all([revalidatePath(slug)]).catch((err) => {
+  Promise.all([revalidatePath(`/articles/${slug}`)]).catch((err) => {
     console.error(err);
     return NextResponse.json(
       { message: "Fail to revalidate" },
@@ -29,3 +29,5 @@ export const POST = async (req: NextRequest) => {
 
   return NextResponse.json({ message: "Success" }, { status: 200 });
 };
+
+export const dynamic = "force-dynamic";
