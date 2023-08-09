@@ -57,7 +57,7 @@ const GlobalHeader: React.FC = () => {
             <Stack direction="row" alignItems="center">
               <Box>
                 <Link passHref href="/">
-                  <Button color="neutral">
+                  <Button color="neutral" aria-label="rory-log">
                     <Typography component="h1" fontSize={24} fontWeight={800}>
                       🌱
                     </Typography>
@@ -81,7 +81,11 @@ const GlobalHeader: React.FC = () => {
               ))}
             </Stack>
             <Stack>
-              <IconButton onClick={toggleColorMode} color="inherit">
+              <IconButton
+                onClick={toggleColorMode}
+                color="inherit"
+                aria-label={`toggle ${isDarkMode ? "light" : "dark"} theme`}
+              >
                 {isDarkMode ? (
                   <DarkModeIcon sx={{ color: "#FDD835" }} />
                 ) : (
