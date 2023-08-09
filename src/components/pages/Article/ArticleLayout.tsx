@@ -92,7 +92,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
         <MarkdownTemplate content={content ?? ""} />
         <Divider />
         <Box marginTop={3}>
-          <Typography variant="h6" fontWeight={700} marginBottom={1}>
+          <Typography component='p' variant="h6" fontWeight={700} marginBottom={1}>
             글쓴이
           </Typography>
           <Stack direction="row" columnGap={2}>
