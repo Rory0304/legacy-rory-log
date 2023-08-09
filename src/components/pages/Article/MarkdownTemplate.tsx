@@ -1,20 +1,32 @@
 "use client";
 
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "@mui/material/styles/styled";
 import Box from "@mui/material/Box";
 
-const StyledMarkdownTemplate = styled(Box)`
-  padding-bottom: 4rem;
-  background-color: transparent;
-  &.markdown-body {
-    menu,
-    ol,
-    ul {
-      list-style: revert;
-    }
-  }
-`;
+const StyledMarkdownTemplate = styled(Box)(({ theme }) => ({
+  paddingBottom: "4rem",
+  backgroundColor: "transparent",
+
+  // Customize github stylesheet
+  "&.markdown-body": {
+    lineHeight: "2rem !important",
+
+    "img": {
+      display: 'block',
+      margin: '0 auto',
+      maxWidth: '100%'
+    },
+
+    "menu, ol, ul": {
+      listStyle: "revert",
+    },
+
+    [theme.breakpoints.down("md")]: {
+      lineHeight: "1.75rem !important",
+    },
+  },
+}));
 
 interface MarkdownTemplateProps {
   content: string;
