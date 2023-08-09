@@ -2,6 +2,7 @@ import { PageSeo } from "src/components/pages";
 import { ArticleComment, ArticleLayout } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
+import { stripHtmlTag } from "src/utils/markdown";
 
 import "src/styles/github-markdown-dark.css";
 import "src/styles/github-markdown-light.css";
@@ -23,8 +24,9 @@ const Article = async ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <PageSeo
-        title="Articles | rory dev"
-        description=" Mainly handle development-related knowledge and project retrospectives."
+        title={`${article.title ?? ""} | rory-log`}
+        description={stripHtmlTag(article.content ?? "").substring(0, 300)}
+        imageUrl={article.thumbnail?.url as string}
       />
       <ArticleLayout article={article} />
       <ArticleComment />
