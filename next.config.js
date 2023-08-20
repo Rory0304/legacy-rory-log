@@ -3,8 +3,9 @@
 const nextConfig = {
   transpilePackages: ["@mui/material", "@mui/icons-material"],
   modularizeImports: {
-    "@mui/material/?(((\\w*)?/?)*)": {
-      transform: "@mui/material/{{ matches.[1] }}/{{member}}",
+    "@mui/material/!(styles)/?*": {
+      transform: "@mui/material/{{path}}/{{member}}",
+      skipDefaultConversion: true,
     },
     "@mui/icons-material/?(((\\w*)?/?)*)": {
       transform: "@mui/icons-material/{{ matches.[1] }}/{{member}}",
