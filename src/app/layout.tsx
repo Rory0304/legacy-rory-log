@@ -10,6 +10,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const fnToRunOnClient = `(function () {
+    document.body.dataset.theme =
+      window.localStorage.getItem("theme") ||
+      (window.matchMedia?.("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
+  })()`;
+
   return (
     <html lang="ko">
       <head>
@@ -26,6 +34,10 @@ export default function RootLayout({
         <ThemeProvider>
           <MediaQueryProvider>
             <body>
+              <script
+                id="theme-initialize"
+                dangerouslySetInnerHTML={{ __html: fnToRunOnClient }}
+              />
               <GlobalHeader />
               <GlobalMain>{children}</GlobalMain>
               <GlobalFooter />
