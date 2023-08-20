@@ -2,7 +2,10 @@ import { PageSeo } from "src/components/pages";
 import { ArticleComment, ArticleLayout } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
-import { stripHtmlTag } from "src/utils/markdown";
+import {
+  stripHtmlTag,
+  filterHeadings,
+} from "src/utils/markdown";
 
 import "src/styles/github-markdown-dark.css";
 import "src/styles/github-markdown-light.css";
@@ -20,6 +23,7 @@ export const generateStaticParams = async () => {
 
 const Article = async ({ params }: { params: { slug: string } }) => {
   const article = await getArticleBySlug({ slug: params.slug });
+  const headings = filterHeadings(2, article?.content ?? "");
 
   return (
     <>
@@ -28,7 +32,7 @@ const Article = async ({ params }: { params: { slug: string } }) => {
         description={stripHtmlTag(article.content ?? "").substring(0, 300)}
         imageUrl={article.thumbnail?.url as string}
       />
-      <ArticleLayout article={article} />
+      <ArticleLayout article={article} headings={headings} />
       <ArticleComment />
     </>
   );
