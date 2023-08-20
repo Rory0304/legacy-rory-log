@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeIn, staggerImmediate } from "src/constants/styles/animation";
 
 interface PageHeaderProps {
@@ -14,7 +14,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
   return (
     <Stack
       paddingY={8}
-      component={motion.header}
+      component={m.header}
       initial="initial"
       animate="animate"
       variants={staggerImmediate}
@@ -22,7 +22,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
       {/* Introduce area */}
       <Typography
         variant="h3"
-        component={motion.h1}
+        component={m.h1}
         fontWeight={800}
         marginBottom={2}
         variants={fadeIn}
@@ -31,7 +31,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
       </Typography>
       <Typography
         variant="h6"
-        component={motion.p}
+        component={m.p}
         color="grayText"
         fontWeight={400}
         variants={fadeIn}

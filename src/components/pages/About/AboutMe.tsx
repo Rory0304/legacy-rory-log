@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeIn, staggerImmediate } from "src/constants/styles/animation";
 
 import { Stack, Box, Typography } from "@mui/material";
@@ -11,7 +11,7 @@ const AboutMe: React.FC = () => {
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
-      component={motion.article}
+      component={m.article}
       initial="initial"
       animate="animate"
       alignItems={{ xs: "flex-start", sm: "center" }}
@@ -19,7 +19,7 @@ const AboutMe: React.FC = () => {
       paddingY={10}
       variants={staggerImmediate}
     >
-      <Box component={motion.div} variants={fadeIn}>
+      <Box component={m.div} variants={fadeIn}>
         <Image
           src="/profile-avatar.svg"
           alt="profile-avatar"
@@ -29,14 +29,14 @@ const AboutMe: React.FC = () => {
       </Box>
       <Box>
         <Typography
-          component={motion.h1}
+          component={m.h1}
           variant="h4"
           fontWeight={800}
           marginBottom={1}
           variants={fadeIn}
         >{`안녕하세요, 로리입니다.`}</Typography>
         <Typography
-          component={motion.p}
+          component={m.p}
           variant="h6"
           color="GrayText"
           whiteSpace="pre-line"
