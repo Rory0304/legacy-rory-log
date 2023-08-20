@@ -12,10 +12,14 @@ const StyledMarkdownTemplate = styled(Box)(({ theme }) => ({
   "&.markdown-body": {
     lineHeight: "2rem !important",
 
-    "img": {
-      display: 'block',
-      margin: '0 auto',
-      maxWidth: '100%'
+    h2: {
+      scrollMarginTop: "calc(var(--sticky-header-height) + 10px)",
+    },
+
+    img: {
+      display: "block",
+      margin: "0 auto",
+      maxWidth: "100%",
     },
 
     "menu, ol, ul": {
