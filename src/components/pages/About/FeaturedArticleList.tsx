@@ -117,7 +117,7 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
           fontWeight={700}
           variants={fadeIn}
         >
-          Featured Posts
+          대표 아티클
         </Typography>
         <Link href="/articles">
           <Typography
