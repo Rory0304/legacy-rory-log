@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Box, Stack, CardContent, Card, Typography } from "@mui/material";
 import Link from "next/link";
 import { ArticleType } from "src/app/api/articles/getArticles";
 import Image from "next/image";
 import styled from "@emotion/styled";
 import { fadeInSlideToLeft } from "src/constants/styles/animation";
+import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import { fadeIn, staggerImmediate } from "src/constants/styles/animation";
 
 interface FeaturedArticleListProps {
   featuredArticleList: ArticleType[];
@@ -99,12 +101,38 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
 }) => {
   return (
     <Box paddingY={3}>
-      <Typography component="h1" variant="h4" fontWeight={700} marginBottom={3}>
-        추천 아티클
-      </Typography>
+      <Stack
+        direction="row"
+        marginBottom={3}
+        justifyContent="space-between"
+        alignItems="center"
+        component={m.div}
+        initial="initial"
+        animate="animate"
+        variants={staggerImmediate}
+      >
+        <Typography
+          component={m.h1}
+          variant="h4"
+          fontWeight={700}
+          variants={fadeIn}
+        >
+          Featured Posts
+        </Typography>
+        <Link href="/articles">
+          <Typography
+            component={m.span}
+            color="GrayText"
+            sx={{ opacity: 0.75, "&:hover": { opacity: 1 } }}
+          >
+            Read all
+            <TrendingFlatIcon sx={{ verticalAlign: "top", marginLeft: 0.5 }} />
+          </Typography>
+        </Link>
+      </Stack>
 
       <Stack
-        component={motion.ul}
+        component={m.ul}
         initial="initial"
         animate="visible"
         variants={{
@@ -120,12 +148,9 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
         }}
       >
         {featuredArticleList.slice(0, 3).map((article, index) => (
-          <motion.li
-            key={`featured-article-${index}`}
-            variants={fadeInSlideToLeft}
-          >
+          <m.li key={`featured-article-${index}`} variants={fadeInSlideToLeft}>
             <FeaturedArticleCard {...article} />
-          </motion.li>
+          </m.li>
         ))}
       </Stack>
     </Box>
