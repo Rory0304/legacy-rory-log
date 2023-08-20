@@ -36,3 +36,23 @@ export const stripHtmlTag = (htmlString) => {
   const textContent = htmlString.replace(STRIPPING_HTML_TAG_REGEX_PATTERN, "");
   return textContent;
 };
+
+/**
+ * Strip html tag from html string
+ * @param {number} heading
+ * @param {string} htmlContent
+ */
+export const filterHeadings = (heading, htmlContent) => {
+  const idPattern = new RegExp(
+    `<h([${heading}])[^>]*id=['"]([^'"]+)['"][^>]*>(.*?)<\/h${heading}>`,
+    "g"
+  );
+  const matches = htmlContent.matchAll(idPattern);
+
+  const headings = Array.from(matches, (match) => ({
+    text: stripHtmlTag(match[3]),
+    id: match[2],
+  }));
+
+  return headings;
+};
