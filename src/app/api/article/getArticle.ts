@@ -2,7 +2,6 @@
 
 import { convertMarkdownToHtml } from "src/utils/markdown";
 import client from "src/graphql/client";
-import { GET_ARTICLE } from "src/graphql/query";
 import {
   GetArticleQuery,
   GetArticleDocument,

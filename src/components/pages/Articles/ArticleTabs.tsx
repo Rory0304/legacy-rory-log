@@ -22,7 +22,7 @@ interface ArticleCategoryProps {
 
 const StyledTab = styled(Tab)(({ theme }) => ({
   borderBottom: 0,
-  textTransfrom: "none",
+  textTransform: "none",
   minWidth: 0,
   minHeight: "32px",
   padding: 0,

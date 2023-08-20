@@ -30,6 +30,18 @@ const PAGE_LIST = [
 const GlobalHeader: React.FC = () => {
   const { isDarkMode, toggleColorMode } = useColorMode();
 
+  const [modeIcon, setModeIcon] = React.useState<React.ReactElement>(<></>);
+
+  React.useEffect(() => {
+    setModeIcon(
+      isDarkMode ? (
+        <DarkModeIcon sx={{ color: "#FDD835" }} />
+      ) : (
+        <LightModeIcon sx={{ color: "#FDD835" }} />
+      )
+    );
+  }, [isDarkMode]);
+
   return (
     <AppBar
       elevation={0}
@@ -86,11 +98,7 @@ const GlobalHeader: React.FC = () => {
                 color="inherit"
                 aria-label={`toggle ${isDarkMode ? "light" : "dark"} theme`}
               >
-                {isDarkMode ? (
-                  <DarkModeIcon sx={{ color: "#FDD835" }} />
-                ) : (
-                  <LightModeIcon sx={{ color: "#FDD835" }} />
-                )}
+                {modeIcon}
               </IconButton>
             </Stack>
           </Stack>

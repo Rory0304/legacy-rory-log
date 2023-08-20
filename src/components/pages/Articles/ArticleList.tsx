@@ -74,9 +74,6 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                     variant="h5"
                     marginBottom={1}
                     fontWeight={400}
-                    sx={{
-                      transition: "color 0.15s",
-                    }}
                   >
                     {article.title}
                   </Typography>

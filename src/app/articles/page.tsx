@@ -28,7 +28,7 @@ const Articles = async () => {
         description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
       />
       <PageHeader
-        title={"Article"}
+        title={"Articles"}
         description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
       />
       <ArticlesLayout articleList={articles} tabList={tabList} />
