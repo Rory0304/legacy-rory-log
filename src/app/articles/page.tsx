@@ -1,7 +1,17 @@
 import React from "react";
-import { PageSeo, PageHeader, ArticlesLayout } from "src/components/pages";
+import { Metadata } from "next";
+
+import { PageHeader, ArticlesLayout } from "src/components/pages";
 
 import { getArticles } from "src/app/api/articles/getArticles";
+
+export const metadata: Metadata = {
+  title: "Article | rory log",
+  description: "개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다.",
+  alternates: {
+    canonical: "https://rory-log.vercel.app/articles",
+  },
+};
 
 const Articles = async () => {
   const articles = await getArticles({ preview: false });
@@ -23,10 +33,6 @@ const Articles = async () => {
 
   return (
     <>
-      <PageSeo
-        title="Article | rory dev"
-        description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
-      />
       <PageHeader
         title={"Articles"}
         description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."

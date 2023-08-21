@@ -1,14 +1,23 @@
 import React from "react";
-import { PageSeo, AboutMe, FeaturedArticleList } from "src/components/pages";
+import { Metadata } from "next";
+
+import { AboutMe, FeaturedArticleList } from "src/components/pages";
 
 import { getFeaturedArticles } from "src/app/api/articles/getArticles";
+
+export const metadata: Metadata = {
+  title: "Home | rory log",
+  description: "rory log",
+  alternates: {
+    canonical: "https://rory-log.vercel.app/",
+  },
+};
 
 const Home = async () => {
   const featuredArticles = await getFeaturedArticles({ preview: false });
 
   return (
     <div>
-      <PageSeo title="Home | rory dev" description="rory dev" />
       <AboutMe />
       <FeaturedArticleList featuredArticleList={featuredArticles} />
     </div>
