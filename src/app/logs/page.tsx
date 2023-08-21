@@ -1,5 +1,5 @@
 import React from "react";
-import { PageSeo, PageHeader } from "src/components/pages";
+import { PageHeader } from "src/components/pages";
 import LogList from "src/components/pages/Logs/LogList";
 
 import { getLogs } from "src/app/api/logs/getLogs";
@@ -11,10 +11,10 @@ const Logs = async () => {
   const logs = await getLogs({ preview: false });
   return (
     <>
-      <PageSeo
+      {/* <PageSeo
         title="Log | rory dev"
         description="커리어, 가치관, 루틴에 관한 짧은 고민들을 정리합니다."
-      />
+      /> */}
       <PageHeader
         title={"Log"}
         description="커리어, 가치관, 루틴에 관한 짧은 고민들을 정리합니다."
