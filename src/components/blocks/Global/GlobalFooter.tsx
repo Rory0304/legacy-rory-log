@@ -56,6 +56,7 @@ const Footer: React.FC = () => {
                   href={contact.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${contact.title}| ${contact.url}`}
                 >
                   {contact.icon}
                 </Link>
