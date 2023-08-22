@@ -6,4 +6,4 @@ Allow: /
 Host: https://rory-dev.com
 
 # Sitemaps
-Sitemap:https://rory-dev.com/sitemap/sitemap.xml
+Sitemap:https://rory-log.vercel.app/sitemap/sitemap.xml
