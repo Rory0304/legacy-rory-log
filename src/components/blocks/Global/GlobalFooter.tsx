@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                   {contact.icon}
                 </Link>
               ))}
-              <Link href="/rss.xml">
+              <Link href="/rss.xml" aria-label={`rory log rss feed`}>
                 <RssFeedIcon />
               </Link>
             </Stack>
