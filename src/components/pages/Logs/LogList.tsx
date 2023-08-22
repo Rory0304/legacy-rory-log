@@ -59,7 +59,7 @@ const LogList: React.FC<LogListProps> = ({ logList }) => {
                     <Typography
                       variant="caption"
                       component="p"
-                      color="GrayText"
+                      color="text.secondary"
                     >
                       <time dateTime={localizedDate} suppressHydrationWarning>
                         {localizedDate}
@@ -80,7 +80,11 @@ const LogList: React.FC<LogListProps> = ({ logList }) => {
                   </Box>
                   <Stack direction="row" columnGap={1} paddingBottom={3}>
                     {log.tag.map((t, index) => (
-                      <Typography key={index} variant="body2" color="GrayText">
+                      <Typography
+                        key={index}
+                        variant="body2"
+                        color="text.secondary"
+                      >
                         #{t}
                       </Typography>
                     ))}

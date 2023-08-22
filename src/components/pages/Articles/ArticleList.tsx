@@ -80,7 +80,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                   <Typography
                     component="p"
                     variant="body1"
-                    color="GrayText"
+                    color="text.secondary"
                     marginBottom={3}
                     sx={{
                       overflow: "hidden",
@@ -95,7 +95,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                   <Typography
                     component="span"
                     variant="caption"
-                    color="GrayText"
+                    color="text.secondary"
                   >
                     <time dateTime={localizedDate} suppressHydrationWarning>
                       {localizedDate}

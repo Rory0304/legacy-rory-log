@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { CssBaseline } from "@mui/material";
 import emotionReset from "emotion-reset";
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
@@ -12,6 +11,7 @@ import { resetStyles } from "src/constants/styles/resetStyles";
 import ColorModeContext from "src/contexts/ColorModeContext";
 import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
 import createTheme from "@mui/material/styles/createTheme";
+import CssBaseline from '@mui/material/CssBaseline';
 import { getDesignTokens } from "src/styles/designTokens";
 
 //

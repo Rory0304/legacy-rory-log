@@ -91,7 +91,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
             >
               {title}
             </Typography>
-            <Typography variant="body1" color="GrayText">
+            <Typography variant="body1" color="text.secondary">
               <time dateTime={localizedDate} suppressHydrationWarning>
                 {localizedDate}
               </time>
@@ -152,7 +152,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
             sx={{
               width: 200,
               bgcolor: colors.grey[200],
-              color: "GrayText",
+              color: "text.secondary",
               "&:hover": {
                 bgcolor: colors.grey[300],
               },

@@ -32,7 +32,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, description }) => {
       <Typography
         variant="h6"
         component={m.p}
-        color="grayText"
+        color="text.secondary"
         fontWeight={400}
         variants={fadeIn}
       >

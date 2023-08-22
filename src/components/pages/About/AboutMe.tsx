@@ -38,7 +38,7 @@ const AboutMe: React.FC = () => {
         <Typography
           component={m.p}
           variant="h6"
-          color="GrayText"
+          color="text.secondary"
           whiteSpace="pre-line"
           fontWeight={400}
           variants={fadeIn}

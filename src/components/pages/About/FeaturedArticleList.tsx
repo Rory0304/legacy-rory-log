@@ -70,13 +70,13 @@ const FeaturedArticleCard: React.FC<ArticleType> = ({
           <Typography
             component="span"
             variant="body2"
-            color="GrayText"
+            color="text.secondary"
             marginBottom={2}
           >
             {category}
           </Typography>
           <Typography
-            component="h4"
+            component="h3"
             variant="h6"
             marginBottom={1}
             sx={{
@@ -85,7 +85,7 @@ const FeaturedArticleCard: React.FC<ArticleType> = ({
           >
             {title}
           </Typography>
-          <Typography component="span" variant="caption" color="GrayText">
+          <Typography component="span" variant="caption" color="text.secondary">
             <time dateTime={localizedDate} suppressHydrationWarning>
               {localizedDate}
             </time>
@@ -112,7 +112,7 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
         variants={staggerImmediate}
       >
         <Typography
-          component={m.h1}
+          component={m.h2}
           variant="h4"
           fontWeight={700}
           variants={fadeIn}
@@ -122,7 +122,7 @@ const FeaturedArticleList: React.FC<FeaturedArticleListProps> = ({
         <Link href="/articles">
           <Typography
             component={m.span}
-            color="GrayText"
+            color="text.secondary"
             sx={{ opacity: 0.75, "&:hover": { opacity: 1 } }}
           >
             Read all
