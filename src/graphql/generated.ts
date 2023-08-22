@@ -1004,7 +1004,7 @@ export const ArticleFieldsFragmentDoc = gql`
   category
   date
   thumbnail {
-    url
+    url(transform: {width: 1426, height: 500, format: WEBP, quality: 100})
   }
 }
     `;
