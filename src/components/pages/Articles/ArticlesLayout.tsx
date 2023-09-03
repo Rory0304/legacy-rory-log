@@ -55,7 +55,7 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   //
   //
   //
-  useDebounce(() => setDebouncedSearchInput(searchInput), 300, [searchInput]);
+  useDebounce(() => setDebouncedSearchInput(searchInput), 200, [searchInput]);
 
   useUpdateEffect(() => {
     setSelectedTab("All");
@@ -65,27 +65,28 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
   //
   // Update searchedArticleList when debounced searchInput changes
   //
-  useUpdateEffect(() => {
+  React.useEffect(() => {
     const searchedArticleList = articleList.filter((article) =>
       article.title?.includes(searchInputQueryParams ?? "")
     );
     setSearchedArticleList(searchedArticleList);
     setPage(1);
-  }, [searchInputQueryParams]);
+  }, [searchInputQueryParams, articleList]);
 
   //
   // Update searchedArticleList when searchTabQueryParams changes
   //
-  useUpdateEffect(() => {
+  React.useEffect(() => {
     if (searchTabQueryParams) {
       const filteredArticleList =
         selectedTab === "All"
           ? articleList
           : articleList.filter((article) => article.category === selectedTab);
+
       setSearchedArticleList(filteredArticleList);
       setPage(1);
     }
-  }, [searchTabQueryParams]);
+  }, [searchTabQueryParams, selectedTab, articleList]);
 
   useUpdateEffect(() => {
     if (isBrowser) {
