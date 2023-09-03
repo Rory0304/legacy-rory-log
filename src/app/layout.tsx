@@ -34,6 +34,7 @@ export default function RootLayout({
         <ThemeProvider>
           <MediaQueryProvider>
             <body>
+              {/* ref: https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21  */}
               <script
                 id="theme-initialize"
                 dangerouslySetInnerHTML={{ __html: fnToRunOnClient }}
