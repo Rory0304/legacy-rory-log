@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
+export const dynamic = "force-dynamic";
+
 const ACCESS_TOKEN =
   process.env.NEXT_PUBLIC_CONTENTFUL_CONTENT_DELIVERY_API_ACCESS_TOKEN ?? "";
 
@@ -19,7 +21,9 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: "Slug not found" }, { status: 400 });
   }
 
-  Promise.all([revalidatePath(`/articles/${slug}`)]).catch((err) => {
+  // ref: https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+  // revalidatePath will revalidate all segments under a dynamic route segment.
+  Promise.all([revalidatePath(`/articles/[slug]`)]).catch((err) => {
     console.error(err);
     return NextResponse.json(
       { message: "Fail to revalidate" },
@@ -27,7 +31,5 @@ export const POST = async (req: NextRequest) => {
     );
   });
 
-  return NextResponse.json({ message: "Success" }, { status: 200 });
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 };
-
-export const dynamic = "force-dynamic";
