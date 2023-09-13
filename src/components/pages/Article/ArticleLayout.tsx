@@ -151,8 +151,8 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
             size="large"
             sx={{
               width: 200,
+              color:colors.grey[700],
               bgcolor: colors.grey[200],
-              color: "text.secondary",
               "&:hover": {
                 bgcolor: colors.grey[300],
               },

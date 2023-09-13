@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { ArticleComment, ArticleLayout } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
