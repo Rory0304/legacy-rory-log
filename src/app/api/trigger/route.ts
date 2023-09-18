@@ -23,7 +23,10 @@ export async function POST(req: NextRequest) {
 
   // ref: https://nextjs.org/docs/app/api-reference/functions/revalidatePath
   // revalidatePath will revalidate all segments under a dynamic route segment.
-  Promise.all([revalidatePath("/articles/[slug]")]).catch((err) => {
+  Promise.all([
+    revalidatePath("/articles"),
+    revalidatePath("/articles/[slug]"),
+  ]).catch((err) => {
     console.error(err);
     return NextResponse.json(
       { message: "Fail to revalidate" },
