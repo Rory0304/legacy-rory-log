@@ -12,7 +12,7 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
   return (
     <Box
       position="sticky"
-      display={{ sm: "none", md: "block" }}
+      display={{ xs: "none", lg: "block" }}
       top={100}
       right={0}
       component="aside"
@@ -20,10 +20,6 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
       height={"fit-content"}
       marginTop={5}
       overflow="scroll"
-      sx={{
-        border: "2px solid #eaeaea",
-        borderRadius: 4,
-      }}
     >
       <Box
         component="header"
@@ -33,8 +29,13 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
           borderBottom: "1px solid #eaeaea",
         }}
       >
-        <Typography component="h2" variant="body1" fontWeight={800}>
-          In this article
+        <Typography
+          component="h2"
+          variant="body1"
+          color="GrayText"
+          fontWeight={800}
+        >
+          목차
         </Typography>
       </Box>
       <Box component="ul" padding={2}>
@@ -42,6 +43,7 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
           <Typography
             key={`#${item}`}
             component="li"
+            color="GrayText"
             variant="body2"
             marginBottom={1.5}
             sx={{

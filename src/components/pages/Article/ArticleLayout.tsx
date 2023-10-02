@@ -11,6 +11,7 @@ import {
   Divider,
   Stack,
   Avatar,
+  Container,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,12 +40,15 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
 
   return (
     <article className="article-template">
-      <Box
+      <Container
+        maxWidth="lg"
         component="header"
         sx={{
           display: "flex",
           width: "100%",
           height: 322,
+          paddingY: 8,
+          paddingX: 3,
         }}
       >
         <Box
@@ -73,14 +77,21 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
             ) : null}
           </Box>
         </Box>
-      </Box>
-      <Box
-        position="relative"
-        display={{ sm: "block", md: "grid" }}
-        gap={6}
-        sx={{ gridTemplateColumns: "minmax(0,1fr) minmax(0,16rem)" }}
+      </Container>
+      <Container
+        maxWidth="lg"
+        sx={{ position: "relative", display: "flex", paddingY: 8 }}
       >
-        <Box component="section">
+        <Container
+          maxWidth={false}
+          component="section"
+          sx={{
+            maxWidth: { xs: "100%", lg: 850 },
+            flex: "0 0 auto",
+            marginLeft: { xs: 0, lg: 16 },
+            paddingX: { xs: 3, lg: 2 },
+          }}
+        >
           <Box paddingY={6}>
             <Chip label={category} sx={{ borderRadius: 4, marginBottom: 1 }} />
             <Typography
@@ -139,9 +150,9 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
               </div>
             </Stack>
           </Box>
-        </Box>
+        </Container>
         <TocList headings={headings} />
-      </Box>
+      </Container>
       <Box paddingTop={10} textAlign="center">
         <Link passHref href="/articles">
           <Button
@@ -151,7 +162,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
             size="large"
             sx={{
               width: 200,
-              color:colors.grey[700],
+              color: colors.grey[700],
               bgcolor: colors.grey[200],
               "&:hover": {
                 bgcolor: colors.grey[300],

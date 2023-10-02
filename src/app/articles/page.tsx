@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-
+import Container from "src/components/blocks/Container/Container";
 import { PageHeader, ArticlesLayout } from "src/components/pages";
 
 import { getArticles } from "src/app/api/articles/getArticles";
@@ -32,13 +32,13 @@ const Articles = async () => {
   const tabList = getTabList();
 
   return (
-    <>
+    <Container>
       <PageHeader
         title={"Articles"}
         description="개발 관련 지식, 프로젝트 회고 관련 글을 작성합니다."
       />
       <ArticlesLayout articleList={articles} tabList={tabList} />
-    </>
+    </Container>
   );
 };
 

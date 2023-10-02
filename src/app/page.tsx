@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-
+import Container from "src/components/blocks/Container/Container";
 import { AboutMe, FeaturedArticleList } from "src/components/pages";
 
 import { getFeaturedArticles } from "src/app/api/articles/getArticles";
@@ -17,10 +17,10 @@ const Home = async () => {
   const featuredArticles = await getFeaturedArticles({ preview: false });
 
   return (
-    <div>
+    <Container>
       <AboutMe />
       <FeaturedArticleList featuredArticleList={featuredArticles} />
-    </div>
+    </Container>
   );
 };
 
