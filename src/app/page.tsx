@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import Container from "src/components/blocks/Container/Container";
 import { AboutMe, FeaturedArticleList } from "src/components/pages";
+import Container from "src/components/blocks/Container/Container";
 
 import { getFeaturedArticles } from "src/app/api/articles/getArticles";
 

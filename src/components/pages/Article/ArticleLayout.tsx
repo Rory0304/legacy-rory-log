@@ -30,7 +30,7 @@ interface ArticleLayoutProps {
 }
 
 const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
-  const { title, content, category, thumbnail, date } = article;
+  const { title, content, category, date, thumbnail } = article;
 
   const [localizedDate, setLocalizedDate] = React.useState(date);
 
@@ -41,59 +41,25 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
   return (
     <article className="article-template">
       <Container
-        maxWidth="lg"
-        component="header"
         sx={{
-          display: "flex",
-          width: "100%",
-          height: 322,
+          position: "relative",
+          display: "grid",
+          gridGap: { xs: 0, lg: 40 },
           paddingY: 8,
-          paddingX: 3,
+          gridTemplateAreas: "'temp main toc'",
+          gridTemplateColumns: {
+            xs: "minmax(0,0) minmax(0,1fr) minmax(0,0)",
+            lg: "minmax(0,9rem) minmax(0,1fr) minmax(0,9rem)",
+          },
         }}
       >
         <Box
           sx={{
-            width: "100vw",
-            height: "100%",
-          }}
-        >
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              inset: 0,
-              height: 385,
-            }}
-          >
-            {thumbnail?.url ? (
-              <Image
-                fill
-                priority
-                src={thumbnail.url}
-                alt={`${title} 썸네일입니다.`}
-                style={{ objectFit: "cover" }}
-              />
-            ) : null}
-          </Box>
-        </Box>
-      </Container>
-      <Container
-        maxWidth="lg"
-        sx={{ position: "relative", display: "flex", paddingY: 8 }}
-      >
-        <Container
-          maxWidth={false}
-          component="section"
-          sx={{
-            maxWidth: { xs: "100%", lg: 850 },
-            flex: "0 0 auto",
-            marginLeft: { xs: 0, lg: 16 },
-            paddingX: { xs: 3, lg: 2 },
+            gridArea: "main",
           }}
         >
           <Box paddingY={6}>
-            <Chip label={category} sx={{ borderRadius: 4, marginBottom: 1 }} />
+            <Chip label={category} sx={{ borderRadius: 4, marginBottom: 2 }} />
             <Typography
               component="h1"
               variant="h4"
@@ -107,6 +73,26 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
                 {localizedDate}
               </time>
             </Typography>
+          </Box>
+          <Box
+            marginBottom={5}
+            border={(theme) => `1px solid ${theme.palette.divider}`}
+            sx={{
+              position: "relative",
+              paddingTop: "45%",
+              borderRadius: "6px",
+              overflow: "hidden",
+            }}
+          >
+            {thumbnail?.url ? (
+              <Image
+                fill
+                priority
+                src={thumbnail.url}
+                alt={`${title} 썸네일입니다.`}
+                style={{ objectFit: "cover" }}
+              />
+            ) : null}
           </Box>
           <MarkdownTemplate content={content ?? ""} />
           <Divider />
@@ -150,10 +136,10 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article, headings }) => {
               </div>
             </Stack>
           </Box>
-        </Container>
+        </Box>
         <TocList headings={headings} />
       </Container>
-      <Box paddingTop={10} textAlign="center">
+      <Box paddingTop={3} paddingBottom={10} textAlign="center">
         <Link passHref href="/articles">
           <Button
             disableElevation

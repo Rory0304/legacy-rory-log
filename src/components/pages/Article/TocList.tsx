@@ -11,6 +11,7 @@ interface TocListProps {
 const TocList: React.FC<TocListProps> = ({ headings }) => {
   return (
     <Box
+      className="toc"
       position="sticky"
       display={{ xs: "none", lg: "block" }}
       top={100}
@@ -20,25 +21,17 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
       height={"fit-content"}
       marginTop={5}
       overflow="scroll"
+      sx={{
+        gridArea: "toc",
+      }}
     >
       <Box
-        component="header"
-        paddingY={2}
+        component="ul"
         paddingX={2}
         sx={{
-          borderBottom: "1px solid #eaeaea",
+          borderLeft: "1px solid #eaeaea",
         }}
       >
-        <Typography
-          component="h2"
-          variant="body1"
-          color="GrayText"
-          fontWeight={800}
-        >
-          목차
-        </Typography>
-      </Box>
-      <Box component="ul" padding={2}>
         {headings.map((item) => (
           <Typography
             key={`#${item}`}
@@ -48,7 +41,7 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
             marginBottom={1.5}
             sx={{
               "&:hover": {
-                color: "coral",
+                color: "black",
               },
             }}
           >

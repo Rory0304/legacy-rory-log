@@ -24,6 +24,9 @@ const PAGE_LIST = [
   {
     title: "Articles",
     url: "/articles",
+  },{
+    title: "Diary",
+    url: "/diary",
   },
 ];
 

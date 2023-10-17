@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ArticleComment, ArticleLayout } from "src/components/pages/Article";
+import { ArticleLayout } from "src/components/pages/Article";
 import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 import { stripHtmlTag, filterHeadings } from "src/utils/markdown";
@@ -53,12 +53,7 @@ const Article = async ({ params }: { params: { slug: string } }) => {
   const article = await getArticleBySlug({ slug: params.slug });
   const headings = filterHeadings(2, article?.content ?? "");
 
-  return (
-    <>
-      <ArticleLayout article={article} headings={headings} />
-      <ArticleComment />
-    </>
-  );
+  return <ArticleLayout article={article} headings={headings} />;
 };
 
 export default Article;

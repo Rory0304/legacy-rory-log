@@ -73,7 +73,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleList }) => {
                     component="p"
                     variant="h5"
                     marginBottom={1}
-                    fontWeight={400}
+                    fontWeight={500}
                   >
                     {article.title}
                   </Typography>

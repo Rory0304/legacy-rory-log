@@ -19,7 +19,9 @@ const StyledMarkdownTemplate = styled(Box)(({ theme }) => ({
     img: {
       display: "block",
       margin: "0 auto",
+      maxHeight: "350px",
       maxWidth: "100%",
+      borderRadius: "6px",
     },
 
     "menu, ol, ul": {

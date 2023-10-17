@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Typography, Pagination, Box } from "@mui/material";
+import { Typography, Pagination, Box, Stack } from "@mui/material";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 import { useUpdateEffect, useDebounce } from "react-use";
@@ -137,14 +137,14 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
               offset + ARTICLES_PER_PAGE
             )}
           />
-          <Box>
+          <Stack direction="row" justifyContent="center">
             <Pagination
               shape="rounded"
               count={total}
               page={page}
               onChange={(_, value) => setPage(value)}
             />
-          </Box>
+          </Stack>
         </Box>
       </Box>
     </>

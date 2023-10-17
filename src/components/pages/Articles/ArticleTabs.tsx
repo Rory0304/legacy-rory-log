@@ -28,7 +28,6 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   padding: 0,
   fontSize: "1rem",
   transition: "all 0.15s",
-  fontWeight: 600,
   alignItems: "flex-start",
 
   [theme.breakpoints.down("md")]: {
