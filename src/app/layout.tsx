@@ -4,6 +4,27 @@ import {
   GlobalFooter,
 } from "src/components/blocks/Global";
 import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
+import localFont from "@next/font/local";
+
+const myFont = localFont({
+  src: "../styles/PretendardVariable.woff2",
+  fallback: [
+    "Pretendard",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "system-ui",
+    "Roboto",
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "sans-serif",
+  ],
+});
 
 export default function RootLayout({
   children,
@@ -21,19 +42,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <link
-          rel="stylesheet preload"
-          as="style"
-          crossOrigin=""
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
-        />
         <link rel="icon" href={`/favicon.ico`} />
       </head>
 
       <AppProvider>
         <ThemeProvider>
           <MediaQueryProvider>
-            <body>
+            <body className={myFont.className}>
               {/* ref: https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21  */}
               <script
                 id="theme-initialize"
