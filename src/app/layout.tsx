@@ -6,12 +6,8 @@ import {
 import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
 import localFont from "@next/font/local";
 
-import "src/styles/github-markdown-dark.css";
-import "src/styles/github-markdown-light.css";
-import "highlight.js/styles/atom-one-dark.css";
-
 const myFont = localFont({
-  src: "../styles/PretendardVariable.woff2",
+  src: "../assets/PretendardVariable.woff2",
   fallback: [
     "Pretendard",
     "-apple-system",
