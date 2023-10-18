@@ -34,7 +34,7 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
       >
         {headings.map((item) => (
           <Typography
-            key={`#${item}`}
+            key={item.id}
             component="li"
             color="GrayText"
             variant="body2"
