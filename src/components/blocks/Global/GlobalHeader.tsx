@@ -24,7 +24,8 @@ const PAGE_LIST = [
   {
     title: "Articles",
     url: "/articles",
-  },{
+  },
+  {
     title: "Diary",
     url: "/diary",
   },
@@ -72,7 +73,11 @@ const GlobalHeader: React.FC = () => {
             <Stack direction="row" alignItems="center">
               <Box>
                 <Link passHref href="/">
-                  <Button color="neutral" aria-label="rory-log">
+                  <Button
+                    component="div"
+                    color="neutral"
+                    aria-label="rory-log"
+                  >
                     <Typography component="h1" fontSize={24} fontWeight={800}>
                       🌱
                     </Typography>
@@ -80,8 +85,9 @@ const GlobalHeader: React.FC = () => {
                 </Link>
               </Box>
               {PAGE_LIST.map((page) => (
-                <Link passHref href={page.url} key={page.title}>
+                <Link href={page.url} key={page.title}>
                   <Button
+                    component="div"
                     color="neutral"
                     sx={{
                       my: 2,
