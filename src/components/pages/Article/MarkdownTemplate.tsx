@@ -10,8 +10,6 @@ const StyledMarkdownTemplate = styled(Box)(({ theme }) => ({
 
   // Customize github stylesheet
   "&.markdown-body": {
-    lineHeight: "2rem !important",
-
     h2: {
       scrollMarginTop: "calc(var(--sticky-header-height) + 10px)",
     },
@@ -26,10 +24,6 @@ const StyledMarkdownTemplate = styled(Box)(({ theme }) => ({
 
     "menu, ol, ul": {
       listStyle: "revert",
-    },
-
-    [theme.breakpoints.down("md")]: {
-      lineHeight: "1.75rem !important",
     },
   },
 }));
