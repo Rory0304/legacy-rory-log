@@ -4,12 +4,15 @@ import React from "react";
 import emotionReset from "emotion-reset";
 
 import { Global } from "@emotion/react";
-import { resetStyles } from "src/constants/styles/resetStyles";
 import ColorModeContext from "src/contexts/ColorModeContext";
 import MuiThemeProvider from "@mui/material/styles/ThemeProvider";
 import createTheme from "@mui/material/styles/createTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { getDesignTokens } from "src/styles/designTokens";
+
+import { resetStyles } from "src/constants/styles/resetStyles";
+import { githubMarkdownDarkStyles } from "src/constants/styles/githubMarkdownDark";
+import { githubMarkdownLightStyles } from "src/constants/styles/githubMarkdownLight";
 
 //
 //
@@ -35,6 +38,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       window.matchMedia?.("(prefers-color-scheme: dark)")
         ? "dark"
         : "light";
+
+    if (!document.body.dataset.theme) {
+      document.body.dataset.theme = currentMode;
+    }
+
     setMode(currentMode as ColorModeType);
   }, []);
 
@@ -55,7 +63,14 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Global styles={[emotionReset, resetStyles]} />
+      <Global
+        styles={[
+          emotionReset,
+          resetStyles,
+          githubMarkdownLightStyles,
+          githubMarkdownDarkStyles,
+        ]}
+      />
       <ColorModeContext.Provider value={{ toggleColorMode }}>
         {children}
       </ColorModeContext.Provider>
