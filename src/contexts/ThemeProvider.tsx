@@ -33,16 +33,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   // setting mode of react state in browser rendering
   //
   React.useEffect(() => {
-    const currentMode =
-      window.localStorage.getItem("theme") ||
-      window.matchMedia?.("(prefers-color-scheme: dark)")
-        ? "dark"
-        : "light";
-
-    if (!document.body.dataset.theme) {
-      document.body.dataset.theme = currentMode;
-    }
-
+    const currentMode = document.body.dataset.theme;
     setMode(currentMode as ColorModeType);
   }, []);
 
