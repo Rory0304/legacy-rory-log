@@ -6,6 +6,10 @@ import {
 import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
 import localFont from "@next/font/local";
 
+import "src/styles/github-markdown-dark.css";
+import "src/styles/github-markdown-light.css";
+import "highlight.js/styles/atom-one-dark.css";
+
 const myFont = localFont({
   src: "../styles/PretendardVariable.woff2",
   fallback: [
@@ -45,22 +49,22 @@ export default function RootLayout({
         <link rel="icon" href={`/favicon.ico`} />
       </head>
 
-      <AppProvider>
-        <ThemeProvider>
-          <MediaQueryProvider>
-            <body className={myFont.className}>
-              {/* ref: https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21  */}
-              <script
-                id="theme-initialize"
-                dangerouslySetInnerHTML={{ __html: fnToRunOnClient }}
-              />
+      <body className={myFont.className}>
+        {/* ref: https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21  */}
+        <script
+          id="theme-initialize"
+          dangerouslySetInnerHTML={{ __html: fnToRunOnClient }}
+        />
+        <AppProvider>
+          <ThemeProvider>
+            <MediaQueryProvider>
               <GlobalHeader />
               <GlobalMain>{children}</GlobalMain>
               <GlobalFooter />
-            </body>
-          </MediaQueryProvider>
-        </ThemeProvider>
-      </AppProvider>
+            </MediaQueryProvider>
+          </ThemeProvider>
+        </AppProvider>
+      </body>
     </html>
   );
 }

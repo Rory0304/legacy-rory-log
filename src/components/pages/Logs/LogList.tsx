@@ -69,7 +69,7 @@ const LogList: React.FC<LogListProps> = ({ logList }) => {
             return (
               <ListItem key={`log-${index}`} disablePadding divider>
                 <article>
-                  <Box paddingBottom={3}>
+                  <Box paddingY={4}>
                     <Link href={`#${title}`}>
                       <Typography
                         id={title}

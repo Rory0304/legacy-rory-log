@@ -4,10 +4,6 @@ import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 import { stripHtmlTag, filterHeadings } from "src/utils/markdown";
 
-import "src/styles/github-markdown-dark.css";
-import "src/styles/github-markdown-light.css";
-import "highlight.js/styles/atom-one-dark.css";
-
 // -ref: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 const dynamicParams = false;
 export { dynamicParams };

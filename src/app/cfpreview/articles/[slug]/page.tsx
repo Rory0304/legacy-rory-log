@@ -3,10 +3,6 @@ import { getArticleBySlug } from "src/app/api/article/getArticle";
 import { getArticleSlugs } from "src/app/api/articles/getArticleSlugs";
 import { filterHeadings } from "src/utils/markdown";
 
-import "src/styles/github-markdown-dark.css";
-import "src/styles/github-markdown-light.css";
-import "highlight.js/styles/atom-one-dark.css";
-
 const dynamicParams = true;
 export { dynamicParams };
 
