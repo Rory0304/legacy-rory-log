@@ -11,7 +11,7 @@ export const githubMarkdownLightStyles = css`
       '"Segoe UI"', "Roboto", '"Helvetica Neue"', "Arial", "sans-serif",
       '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"';
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.8;
     word-wrap: break-word;
   }
 
@@ -52,8 +52,9 @@ export const githubMarkdownLightStyles = css`
 
   [data-theme="light"] .markdown-body a {
     background-color: transparent;
-    color: #0969da;
-    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+    text-underline-position: under;
   }
 
   [data-theme="light"] .markdown-body a:active,
@@ -80,7 +81,6 @@ export const githubMarkdownLightStyles = css`
     font-weight: 600;
     padding-bottom: 0.3em;
     font-size: 2em;
-    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
   }
 
   [data-theme="light"] .markdown-body mark {
@@ -265,35 +265,34 @@ export const githubMarkdownLightStyles = css`
   [data-theme="light"] .markdown-body h5,
   [data-theme="light"] .markdown-body h6 {
     margin-top: 24px;
-    margin-bottom: 16px;
-    font-weight: 600;
+    margin-bottom: 24px;
+    font-weight: 700;
     line-height: 1.25;
   }
 
   [data-theme="light"] .markdown-body h2 {
-    font-weight: 600;
+    font-weight: 700;
     padding-bottom: 0.3em;
     font-size: 1.5em;
-    border-bottom: 1px solid hsla(210, 18%, 87%, 1);
   }
 
   [data-theme="light"] .markdown-body h3 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.25em;
   }
 
   [data-theme="light"] .markdown-body h4 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1em;
   }
 
   [data-theme="light"] .markdown-body h5 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875em;
   }
 
   [data-theme="light"] .markdown-body h6 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.85em;
     color: #57606a;
   }
@@ -305,9 +304,9 @@ export const githubMarkdownLightStyles = css`
 
   [data-theme="light"] .markdown-body blockquote {
     margin: 0;
-    padding: 0 1em;
-    color: #57606a;
-    border-left: 0.25em solid #d0d7de;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    background-color: rgb(244 244 245 / 1);
+    border-left: 0.15em solid black;
   }
 
   [data-theme="light"] .markdown-body ul,
@@ -554,7 +553,7 @@ export const githubMarkdownLightStyles = css`
   [data-theme="light"] .markdown-body pre,
   [data-theme="light"] .markdown-body details {
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   [data-theme="light"] .markdown-body blockquote > :first-child {

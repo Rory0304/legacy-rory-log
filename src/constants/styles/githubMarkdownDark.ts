@@ -11,7 +11,7 @@ export const githubMarkdownDarkStyles = css`
       '"Segoe UI"', "Roboto", '"Helvetica Neue"', "Arial", "sans-serif",
       '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"';
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.8;
     word-wrap: break-word;
   }
 
@@ -52,8 +52,9 @@ export const githubMarkdownDarkStyles = css`
 
   [data-theme="dark"] .markdown-body a {
     background-color: transparent;
-    color: #58a6ff;
-    text-decoration: none;
+    color: #c9d1d9;
+    text-decoration: underline;
+    text-underline-position: under;
   }
 
   [data-theme="dark"] .markdown-body a:active,
@@ -80,7 +81,6 @@ export const githubMarkdownDarkStyles = css`
     font-weight: 600;
     padding-bottom: 0.3em;
     font-size: 2em;
-    border-bottom: 1px solid #21262d;
   }
 
   [data-theme="dark"] .markdown-body mark {
@@ -264,34 +264,33 @@ export const githubMarkdownDarkStyles = css`
   [data-theme="dark"] .markdown-body h6 {
     margin-top: 24px;
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
   }
 
   [data-theme="dark"] .markdown-body h2 {
-    font-weight: 600;
+    font-weight: 700;
     padding-bottom: 0.3em;
     font-size: 1.5em;
-    border-bottom: 1px solid #21262d;
   }
 
   [data-theme="dark"] .markdown-body h3 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.25em;
   }
 
   [data-theme="dark"] .markdown-body h4 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1em;
   }
 
   [data-theme="dark"] .markdown-body h5 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875em;
   }
 
   [data-theme="dark"] .markdown-body h6 {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.85em;
     color: #8b949e;
   }
@@ -305,7 +304,7 @@ export const githubMarkdownDarkStyles = css`
     margin: 0;
     padding: 0 1em;
     color: #8b949e;
-    border-left: 0.25em solid #30363d;
+    border-left: 0.15em solid #30363d;
   }
 
   [data-theme="dark"] .markdown-body ul,
@@ -552,7 +551,7 @@ export const githubMarkdownDarkStyles = css`
   [data-theme="dark"] .markdown-body pre,
   [data-theme="dark"] .markdown-body details {
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   [data-theme="dark"] .markdown-body blockquote > :first-child {
