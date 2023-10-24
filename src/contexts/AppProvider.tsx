@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-
-import { IntlProvider } from "react-intl";
 import { ApolloProvider } from "@apollo/client";
 import { LazyMotion, domAnimation } from "framer-motion";
 
@@ -17,9 +15,7 @@ interface AppProviderProps {
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   return (
     <ApolloProvider client={apolloClient}>
-      <LazyMotion features={domAnimation}>
-        <IntlProvider locale="ko">{children}</IntlProvider>
-      </LazyMotion>
+      <LazyMotion features={domAnimation}>{children}</LazyMotion>
     </ApolloProvider>
   );
 };

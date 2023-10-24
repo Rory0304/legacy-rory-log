@@ -5,6 +5,8 @@ import {
 } from "src/components/blocks/Global";
 import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
 import localFont from "@next/font/local";
+import GTM from "src/utils/analytics/GTM";
+import Hotjar from "src/utils/analytics/Hotjar";
 
 const myFont = localFont({
   src: "../assets/PretendardVariable.woff2",
@@ -60,6 +62,10 @@ export default function RootLayout({
             </MediaQueryProvider>
           </ThemeProvider>
         </AppProvider>
+
+        {/* Page Analytics */}
+        <GTM />
+        <Hotjar />
       </body>
     </html>
   );
