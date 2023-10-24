@@ -4,7 +4,7 @@ import {
   GlobalFooter,
 } from "src/components/blocks/Global";
 import { AppProvider, ThemeProvider, MediaQueryProvider } from "src/contexts";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import GTM from "src/utils/analytics/GTM";
 import Hotjar from "src/utils/analytics/Hotjar";
 
@@ -33,6 +33,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  /**
+   * Run script on Client
+   * @see https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21
+   */
   const fnToRunOnClient = `(function () {
     document.body.dataset.theme =
       window.localStorage.getItem("theme") ||
@@ -47,8 +51,7 @@ export default function RootLayout({
         <link rel="icon" href={`/favicon.ico`} />
       </head>
 
-      <body className={myFont.className}>
-        {/* ref: https://github.com/gaearon/overreacted.io/blob/master/src/html.js#L21  */}
+      <body className={myFont.className} data-theme="light">
         <script
           id="theme-initialize"
           dangerouslySetInnerHTML={{ __html: fnToRunOnClient }}
