@@ -17,7 +17,7 @@ const Hotjar: React.FC = () => {
 
   return (
     <Script
-      id="script-hotjar"
+      id="hotjar-script"
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
         __html: `(function(h,o,t,j,a,r){
