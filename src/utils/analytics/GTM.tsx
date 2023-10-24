@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import React from "react";
-import { useRouter } from "next/router";
+import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 
 import * as events from "./events";
@@ -11,26 +11,17 @@ import * as events from "./events";
  * @see https://developers.google.com/tag-platform/tag-manager/web
  */
 const GTM: React.FC = () => {
-  const router = useRouter();
-
   //
   // Emit page view event, when router changes
   //
-  React.useEffect(
-    () => {
-      if (process.env.NODE_ENV !== "production") {
-        return;
-      }
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-      router.events.on("routeChangeComplete", events.eventPageView);
-
-      return () => {
-        router.events.off("routeChangeComplete", events.eventPageView);
-      };
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.events]
-  );
+  React.useEffect(() => {
+    if (pathname) {
+      events.eventPageView(pathname);
+    }
+  }, [pathname, searchParams]);
 
   //
   //
