@@ -41,7 +41,7 @@ const TocList: React.FC<TocListProps> = ({ headings }) => {
             marginBottom={1.5}
             sx={{
               "&:hover": {
-                color: "black",
+                color: "coral",
               },
             }}
           >
